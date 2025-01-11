@@ -184,8 +184,12 @@ footer {
     }
 
     .header img{
-      height: 30px;
+      height: 60px;
       width: 95px;
+    }
+
+    .header{
+        height: 100px;
     }
 
     .header a{
