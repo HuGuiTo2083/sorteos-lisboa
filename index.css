@@ -191,6 +191,7 @@ footer {
 
     .header{
         height: 100px;
+        margin-bottom: 20px;
     }
 
     .header a{
@@ -209,6 +210,7 @@ footer {
     }
     .dvReferences{
         margin-top: 30px;
+        padding-top: 20px;
     }
 
     .dvI1{
