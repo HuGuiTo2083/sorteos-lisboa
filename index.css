@@ -162,7 +162,7 @@ footer {
         width: 100%;
     }
     .dvPremio{
-        margin-bottom:16px;
+        margin-bottom:8px;
     }
 
     .dvReferences label {
@@ -173,7 +173,7 @@ footer {
         text-align: center;
     }
 
-    #lb1{
+    .dvI{
         margin-bottom: 80px;
     }
 }
