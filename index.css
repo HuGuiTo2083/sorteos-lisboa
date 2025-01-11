@@ -176,4 +176,13 @@ footer {
     .dvI{
         margin-bottom: 80px;
     }
+     
+    .dvMenu{
+        gap: 10px;
+
+    }
+
+    .dvMenu a{
+        
+    }
 }
