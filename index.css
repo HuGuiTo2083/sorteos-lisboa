@@ -178,11 +178,16 @@ footer {
     }
      
     .dvMenu{
-        gap: 10px;
+        gap: 5px;
 
     }
 
-    .dvMenu a{
-        
+    .header img{
+      width: 20px;
+      height: 20px;
+    }
+
+    .dvI1{
+         margin-top: 20px;
     }
 }
