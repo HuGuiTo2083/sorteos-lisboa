@@ -183,8 +183,11 @@ footer {
     }
 
     .header img{
-      width: 20px;
-      height: 20px;
+      height: 50%;
+    }
+
+    .header a{
+        font-size: 15px;
     }
 
     .dvI1{
