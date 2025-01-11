@@ -183,7 +183,7 @@ footer {
     }
 
     .header img{
-      height: 40%;
+      height: 30%;
     }
 
     .header a{
@@ -195,7 +195,7 @@ footer {
     }
 }
 
-@media screen and (max-width:350px) {
+@media screen and (max-width:380px) {
     .dvReferences label {
         font-size: 35px;
         font-weight: 900;
