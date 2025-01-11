@@ -166,13 +166,13 @@ footer {
     }
 
     .dvReferences label {
-        font-size: 50px;
+        font-size: 40px;
         font-weight: 900;
         font-family: comic;
         color: #38176e
     }
 
     #lb1{
-        margin-bottom: 60px;
+        margin-bottom: 80px;
     }
 }
