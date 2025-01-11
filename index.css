@@ -162,14 +162,15 @@ footer {
         width: 100%;
     }
     .dvPremio{
-        margin-bottom: 40px;
+        margin-bottom:16px;
     }
 
     .dvReferences label {
         font-size: 40px;
         font-weight: 900;
         font-family: comic;
-        color: #38176e
+        color: #38176e;
+        text-align: center;
     }
 
     #lb1{
