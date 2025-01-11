@@ -195,7 +195,7 @@ footer {
     }
 }
 
-@media screen and (max-width:380px) {
+@media screen and (max-width:390px) {
     .dvReferences label {
         font-size: 35px;
         font-weight: 900;
