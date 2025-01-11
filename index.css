@@ -184,7 +184,8 @@ footer {
     }
 
     .header img{
-      height: 100%;
+      height: 100px;
+      width: 100px;
     }
 
     .header a{
@@ -200,6 +201,9 @@ footer {
     .dvReferences label {
         font-size: 35px;
         
+    }
+    .dvReferences{
+        margin-top: 30px;
     }
 
     .dvI1{
