@@ -158,7 +158,9 @@ footer {
 }
 
 @media screen and (max-width:400px) {
-  
+    #imgPremio{
+        width: 100%;
+    }
     .dvPremio{
         margin-bottom:8px;
     }
@@ -182,7 +184,7 @@ footer {
     }
 
     .header img{
-      height: 70%;
+      height: 100%;
     }
 
     .header a{
