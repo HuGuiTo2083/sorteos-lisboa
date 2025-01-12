@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,33 +8,39 @@
     <link href="compra.css" rel="stylesheet" type="text/css">
 
 </head>
+
 <body>
     <div class="dvImage">
- <img src="images/testimonio10.jpg">
+        <img src="images/testimonio10.jpg">
 
     </div>
-<div class="dvForm">
+    <div class="dvForm">
 
-    <div class="contador-container">
-        <input type="number" id="contador" class="contador-input" value="1" min="1">
-        <div class="botones-container">
-            <button class="btn-contador" id="incrementar">+</button>
-            <button class="btn-contador" id="decrementar">-</button>
+        <div class="contador-container">
+            <input type="number" id="contador" class="contador-input" value="1" min="1">
+            <div class="botones-container">
+                <button class="btn-contador" id="incrementar">+</button>
+                <button class="btn-contador" id="decrementar">-</button>
+            </div>
         </div>
-    </div>
-    <label class="lbForm">Nombre:</lab>
-    <input  type="text" placeholder="Nombre"> </input>
-    <label class="lbForm">Nombre:</lab>
-    <input  type="text" placeholder="Apellido"> </input>
-    <label class="lbForm">Nombre:</lab>
-    <input  type="email" placeholder="Correo"> </input>
-    <label class="lbForm">Nombre:</lab>
-    <input  type="number" placeholder="4 números de Referencia"> </input>
-    <label class="lbForm">Nombre:</lab>
-    <input  type="number" placeholder="Ingresa tu Whatsapp"> </input>
-</div>
+        <div class="col"><label class="lbForm">Nombre:</label></div>
 
-<script src="compra.js"></script>
+        <div class="col"><input type="text" placeholder="Nombre"> </input></div>
+        <div class="col"><label class="lbForm">Nombre:</label></div>
+        <div class="col"><input type="text" placeholder="Apellido"> </input></div>
+        <div class="col"><label class="lbForm">Nombre:</label></div>
+        <div class="col"><input type="email" placeholder="Correo"> </input></div>
+
+        <div class="col"></div><label class="lbForm">Nombre:</label>
+
+        <div class="col"><input type="number" placeholder="4 números de Referencia"> </input></div>
+        <div class="col"><label class="lbForm">Nombre:</label></div>
+        <div class="col"></div> <input type="number" placeholder="Ingresa tu Whatsapp"> </input>
+
+    </div>
+
+    <script src="compra.js"></script>
 
 </body>
+
 </html>
