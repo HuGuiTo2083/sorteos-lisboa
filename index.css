@@ -465,9 +465,10 @@ footer label {
 
 }
 
-@media screen and (max-width:380px) {
+@media screen and (max-width:385px) {
     .information2{
-      height: 900px;   
+      height: 900px;  
+      margin-bottom: 100px; 
     }
 
 }
