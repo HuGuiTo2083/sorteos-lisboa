@@ -180,4 +180,8 @@ input::placeholder{
         width: 80%;
         height: 400px;
     }
+
+    .dvSuccess{
+        margin-top: 100px;
+    }
 }
