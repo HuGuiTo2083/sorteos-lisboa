@@ -308,8 +308,8 @@ footer {
 @media screen and (max-width:400px) {
 
     .carousel-slide img {
-        width: 70%;
-        height: 550px;
+        width: 90%;
+        height: 700px;
         object-fit: cover;
     }
     #imgPremio{

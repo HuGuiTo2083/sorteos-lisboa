@@ -208,48 +208,7 @@
     nextButton.addEventListener('click', nextSlide);
     prevButton.addEventListener('click', prevSlide);
 
-    // Event listeners para navegación táctil
-    container.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].pageY;
-        isDragging = true;
-        isHorizontalDrag = null; // Reiniciamos la dirección del deslizamiento
-    });
-
-    container.addEventListener('touchmove', (e) => {
-        if (!isDragging) return;
-
-        const currentX = e.touches[0].clientX;
-        const currentY = e.touches[0].pageY;
-        const diffX = startX - currentX;
-        const diffY = startY - currentY;
-
-        // Si aún no hemos determinado la dirección del deslizamiento
-        if (isHorizontalDrag === null) {
-            // Determinamos si el deslizamiento es más horizontal que vertical
-            isHorizontalDrag = Math.abs(diffX) > Math.abs(diffY);
-        }
-
-        // Si es deslizamiento horizontal
-        if (isHorizontalDrag) {
-            e.preventDefault(); // Prevenimos el scroll solo si es horizontal
-            if (Math.abs(diffX) > 50) {
-                if (diffX > 0) {
-                    nextSlide();
-                } else {
-                    prevSlide();
-                }
-                isDragging = false;
-            }
-        }
-        // Si es vertical, no hacemos nada y dejamos que el scroll natural ocurra
-    }, { passive: false }); // Importante para poder usar preventDefault
-
-    container.addEventListener('touchend', () => {
-        isDragging = false;
-        isHorizontalDrag = null;
-    });
-
+    
     // Teclas de flecha
     document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') prevSlide();
