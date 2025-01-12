@@ -7,7 +7,7 @@ body {
     /* Asegura que el fondo cubra toda la pantalla */
     background-repeat: no-repeat;
     /* El fondo no se repite */
-
+    overflow-x: hidden;
     margin: 0;
 }
 
@@ -203,7 +203,113 @@ footer {
 }
 
 
+.carousel-container {
+    display: flex;
+    transition: transform 0.5s ease;
+    touch-action: pan-x;
+}
+
+.carousel-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.carousel-slide img {
+    width: 65%;
+    height: 700px;
+    object-fit: cover;
+}
+
+.carousel-button {
+    position: absolute;
+   
+    transform: translateY(-50%);
+    background: rgba(190, 58, 250, 0.5);
+    color: white;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    width: 50px;
+    z-index: 10;
+    font-weight: 900;
+    border-radius: 50%;
+}
+
+.carousel-button:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.prev-button {
+    left: 1rem;
+}
+
+.next-button {
+    right: 1rem;
+}
+
+.dots-container {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+
+#references2{
+    margin-top: 20px;
+    background: linear-gradient(90deg, #d88bf0, #ff7cde);
+    width: 100%;
+    height: 1100px;
+    box-shadow:
+        0 -50px 150px -30px rgba(216, 139, 240, 1),
+        /* Sombra superior más intensa */
+        0 50px 150px -30px rgba(255, 124, 222, 1),
+        /* Sombra inferior más intensa */
+        0 0 180px 70px rgba(216, 139, 240, 0.4),
+        /* Sombra difusa alrededor del contenedor */
+        0 0 180px 70px rgba(255, 124, 222, 0.4),
+        /* Sombra difusa alrededor del contenedor */
+        0 -10px 30px -5px rgba(216, 139, 240, 0.8),
+        /* Sombra sólida cerca de la orilla superior */
+        0 10px 30px -5px rgba(255, 124, 222, 0.8),
+        /* Sombra sólida cerca de la orilla inferior */
+        0 -20px 60px -15px rgba(216, 139, 240, 0.6),
+        /* Gradiente de sombra hacia la izquierda */
+        0 20px 60px -15px rgba(255, 124, 222, 0.6),
+        /* Gradiente de sombra hacia la derecha */
+        0 -30px 90px -25px rgba(216, 139, 240, 0.5),
+        /* Gradiente de sombra hacia la izquierda */
+        0 30px 90px -25px rgba(255, 124, 222, 0.5);
+    /* Gradiente de sombra hacia la derecha */
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding-top: 10px;
+    flex-direction: column;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+}
+
+.dot.active {
+    background: #333;
+}
+
+
 @media screen and (max-width:400px) {
+
+    .carousel-slide img {
+        width: 90%;
+        height: 700px;
+        object-fit: cover;
+    }
     #imgPremio{
         width: 100%;
     }
