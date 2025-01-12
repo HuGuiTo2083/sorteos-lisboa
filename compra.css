@@ -116,7 +116,7 @@ input::placeholder{
 @media screen and (max-width: 400px){
     .dvImage{
        
-       height:600px;
+       height:500px;
        
     }
     .dvImage img{
