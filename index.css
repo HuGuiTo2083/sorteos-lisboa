@@ -118,7 +118,7 @@ a {
 
 footer {
     width: 100%;
-    height: 150px;
+    height: 50px;
     background-color: #992aaf;
     margin-top: 40px;
 }
@@ -307,7 +307,6 @@ footer {
 .information2{
     width: 100%;
     height: 800px;
-    background-color: #ffffff00;
     margin-bottom: 100px;
 }
 
@@ -335,6 +334,24 @@ footer {
 .information2  span{
     font-size: 19px;
     color: #c23be3;
+
+}
+.dvInfoFinal p{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 900;
+
+}
+.dvInfoFinal  span{
+    font-size: 19px;
+    color: #cd51ec;
+
+}
+
+.dvInfoFinal{
+width: 100%;
+height: 200px;
+margin-top: 30px;
 
 }
 
