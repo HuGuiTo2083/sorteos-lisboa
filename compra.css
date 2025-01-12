@@ -14,6 +14,34 @@ body {
     font-family: xd;
     src: url('fonts/6680-fontps.ttf');
 }
+.dvSuccess{
+    width: 200px;
+    height: 90px;
+    font-size: 12px;
+    font-weight: 900;
+    color:#1a4f16;
+    background-color: #70df68;
+    border-radius: 1rem;
+    display: flex;
+    
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-left: 50px;
+    padding-top: 20px;
+    display: none;
+    margin-bottom: 20px;
+}
+
+#btPedir{
+    background-color: #4d2671;
+    border-radius: 1rem;
+    color: white;
+    font-size: 17px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    width: 140px;
+    height: 50px;
+    margin-bottom: 20px;
+}
 
 .dvImage{
     margin-top: 50px;
