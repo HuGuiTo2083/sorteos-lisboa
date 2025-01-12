@@ -121,6 +121,9 @@ footer {
     height: 50px;
     background-color: #992aaf;
     margin-top: 40px;
+    display: flex;
+justify-content: center;
+align-items: center;
 }
 
 .dvI{
@@ -168,6 +171,7 @@ footer {
    display: flex;
    flex-direction: column;
    padding: 0;
+   padding-left: 10px;
 }
 
 .information p{
@@ -308,6 +312,7 @@ footer {
     width: 100%;
     height: 800px;
     margin-bottom: 100px;
+    padding-left: 10px;
 }
 
 .dvContador{
@@ -352,9 +357,15 @@ footer {
 width: 100%;
 height: 200px;
 margin-top: 30px;
+padding-left: 10px;
 
 }
 
+footer label{
+    color: white;
+    font-size: 20px;
+    font-weight: 900;
+}
 
 
 
