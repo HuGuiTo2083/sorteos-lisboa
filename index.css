@@ -59,10 +59,14 @@ a {
     align-items: center;
 }
 
+#svgW{
+    position: relative;
+    left: 7px;
+}
 
 .circularButton {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;

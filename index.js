@@ -5,13 +5,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const ms = document.getElementById('btMessage')
 
     ig.addEventListener('click', () => {
-       window.location.href = "https://www.instagram.com"
+       window.location.href = "https://www.instagram.com/aleautos1?igsh=a2hwYTF4aHo5endk"
 
     })
 
     fb.addEventListener('click', () => {
    
-        window.location.href = "https://www.facebook.com"
+        window.location.href = "https://wa.me/+584120528940"
 
     })
 
