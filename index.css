@@ -220,6 +220,8 @@ footer {
     width: 65%;
     height: 700px;
     object-fit: cover;
+    touch-action: pan-y pan-x;
+    -webkit-overflow-scrolling: touch; /* Para mejor soporte en iOS */
 }
 
 .carousel-button {
