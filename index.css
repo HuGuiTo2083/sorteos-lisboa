@@ -464,3 +464,10 @@ footer label {
     }
 
 }
+
+@media screen and (max-width:380px) {
+    .information{
+      height: 900px;   
+    }
+
+}
