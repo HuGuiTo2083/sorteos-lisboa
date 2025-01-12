@@ -377,8 +377,8 @@ footer label{
         object-fit: cover;
     }
     #imgPremio{
-        width: 100%;
-        object-fit: none;
+        width: 95%;
+        height: 400px;
     }
     .dvPremio{
         margin-bottom:8px;
