@@ -466,7 +466,7 @@ footer label {
 }
 
 @media screen and (max-width:380px) {
-    .information{
+    #information2{
       height: 900px;   
     }
 
