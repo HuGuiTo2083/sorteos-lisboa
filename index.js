@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 
     ms.addEventListener('click', () => {
-        window.location.href = "https://www.whatsapp.com"
+        this.lastChild.window.location.href = "mailto:Boxandlabel2@gmail.com"
 
         
     })
