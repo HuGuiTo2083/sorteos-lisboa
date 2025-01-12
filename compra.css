@@ -121,6 +121,6 @@ input::placeholder{
     }
     .dvImage img{
         width: 80%;
-        height: 50px;
+        height: 500px;
     }
 }
