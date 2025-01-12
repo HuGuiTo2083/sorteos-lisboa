@@ -108,6 +108,7 @@ a {
     justify-content: center;
     gap: 20px;
     padding-top: 10px;
+    margin-top: 100px;
     flex-direction: column;
 }
 
@@ -368,6 +369,7 @@ footer label {
     color: white;
     font-size: 20px;
     font-weight: 900;
+    text-align: center;
 }
 
 
@@ -378,6 +380,9 @@ footer label {
   margin-bottom: 50px;
 
 
+}
+#references2{
+    height: 600px;
 }
 
 .information2{
