@@ -86,7 +86,7 @@ a {
 .dvReferences {
     background: linear-gradient(90deg, #d88bf0, #ff7cde);
     width: 100%;
-    height: 900px;
+    height: 1100px;
     box-shadow:
         0 -50px 150px -30px rgba(216, 139, 240, 1),
         /* Sombra superior más intensa */
@@ -140,10 +140,15 @@ footer {
 }
 
 .dvReferences label {
-    font-size: 60px;
+    font-size: 50px;
     font-weight: 900;
     font-family: comic;
     color: #38176e
+}
+
+
+#lbAlex{
+    font-size: 60px;
 }
 
 #imgPremio {
@@ -447,7 +452,7 @@ footer label {
     }
 
     .dvI1 {
-        margin-top: 20px;
+        margin-top: 0px;
     }
 }
 
