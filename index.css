@@ -374,6 +374,19 @@ footer label {
 
 @media screen and (max-width:400px) {
 
+.information{
+  margin-bottom: 50px;
+
+
+}
+
+.information2{
+    margin-bottom: 50px;
+    
+  
+  }
+
+
     .carousel-slide img {
         width: 80%;
         height: 400px;
@@ -396,6 +409,8 @@ footer label {
         color: #38176e;
         text-align: center;
     }
+
+
 
     .dvI {
         margin-top: 30px;
