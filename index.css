@@ -263,6 +263,7 @@ footer {
     background: linear-gradient(90deg, #d88bf0, #ff7cde);
     width: 100%;
     height: 1100px;
+    margin-bottom: 50px;
     box-shadow:
         0 -50px 150px -30px rgba(216, 139, 240, 1),
         /* Sombra superior más intensa */
@@ -301,6 +302,25 @@ footer {
 
 .dot.active {
     background: #333;
+}
+
+.information2{
+    width: 100%;
+    height: 800px;
+    background-color: #e2e0e034;
+    margin-bottom: 100px;
+}
+
+.information2 p{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 900;
+
+}
+.information2  span{
+    font-size: 19px;
+    color: #c23be3;
+
 }
 
 

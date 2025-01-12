@@ -103,8 +103,8 @@
         <p id="lb2">
             <br>
             Paga tus boletos de forma
-            <br> 
-            fácil y rápida por Pago 
+            <br>
+            fácil y rápida por Pago
             <br>
             Móvil utilizando los siguientes datos:
             <br>
@@ -152,6 +152,82 @@
         <div class="dots-container"></div>
     </div>
 
+    <div class="information2">
+        <p>
+            🎉 ¡Es tu momento de ganar! ¿Estás listo 
+            <br>
+            para hacer realidad tus ¿Sueños? ¡Sigue 
+            <br>
+            estos sencillos pasos y asegura tu lugar en la 
+            <br>
+            Gran Rifa! 🎟️
+            <br> <br>
+            1️⃣ Compra mínima: ¡Solo necesitas comprar 2 
+            <br>
+            boletos para participar! Cada boleto tiene un 
+            <br>
+            costo de 35 bolívares.
+            <br> <br>
+
+            2️⃣ Reserva tus boletos ahora: Al seleccionar 
+            <br>
+            la cantidad de boletos, el sistema generará una 
+            <br>
+            preorden con tus datos personales. 
+            <br>
+            Los boletos estarán reservados bajo 
+            <br>
+            tu nombre por 24 horas, ¡No los dejes escapar!
+            <br> <br>
+            3️⃣ Realiza tu pago: Paga tus boletos 
+            <br>
+            de forma fácil y rápida por Pago 
+            <br>
+            Móvil utilizando los siguientes datos:
+            <br>
+            📱 Teléfono: 04120364475
+            <br>
+            💳 Cédula: 18910749
+            <br>
+            🏦 Banco: Banco de Venezuela 0102
+            <br> <br>
+
+            4️⃣ Envía tu comprobante: Después de 
+            <br>
+            pagar, registra los 4 últimos dígitos
+            <br> 
+            de tu referencia de pago a través
+            <br>
+            del formulario que encontrarás aquí. 
+            <br>
+            ¡Tu compra quedará confirmada al instante!
+            <br> <br>
+
+            5️⃣ Confirmación de compra: Una vez 
+            <br>
+            recibidos los 4 últimos dígitos de tu 
+            <br> <br>
+            referencia de pago, tus boletos se
+            <br>
+            marcarán como comprados. ¡Listo para 
+            <br>
+            ganar! ⏰ Recuerda: Tienes 24 horas 
+            <br>
+            para completar el pago. Si no lo
+            <br>
+            haces, los boletos serán liberados 
+            <br>
+            para otros participantes. ¡No pierdas 
+            <br>
+            la oportunidad! ¡Compra ahora y
+            <br>
+            participa en la rifa de tu vida! 🍀.
+            <br> <br>
+
+            <span>Avalado a través de la LOTERÍA DE CARACAS </span>
+        </p>
+    </div>
+
     <footer>
 
 
@@ -161,60 +237,60 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-    const container = document.querySelector('.carousel-container');
-    const slides = document.querySelectorAll('.carousel-slide');
-    const prevButton = document.querySelector('.prev-button');
-    const nextButton = document.querySelector('.next-button');
-    const dotsContainer = document.querySelector('.dots-container');
-    
-    let currentSlide = 0;
-    let startX = 0;
-    let startY = 0;
-    let isDragging = false;
-    let isHorizontalDrag = null;
+            const container = document.querySelector('.carousel-container');
+            const slides = document.querySelectorAll('.carousel-slide');
+            const prevButton = document.querySelector('.prev-button');
+            const nextButton = document.querySelector('.next-button');
+            const dotsContainer = document.querySelector('.dots-container');
 
-    // Crear puntos indicadores
-    slides.forEach((_, index) => {
-        const dot = document.createElement('div');
-        dot.classList.add('dot');
-        if (index === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => goToSlide(index));
-        dotsContainer.appendChild(dot);
-    });
+            let currentSlide = 0;
+            let startX = 0;
+            let startY = 0;
+            let isDragging = false;
+            let isHorizontalDrag = null;
 
-    function updateDots() {
-        document.querySelectorAll('.dot').forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentSlide);
+            // Crear puntos indicadores
+            slides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(index));
+                dotsContainer.appendChild(dot);
+            });
+
+            function updateDots() {
+                document.querySelectorAll('.dot').forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+            }
+
+            function goToSlide(index) {
+                currentSlide = index;
+                container.style.transform = `translateX(-${currentSlide * 100}%)`;
+                updateDots();
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                goToSlide(currentSlide);
+            }
+
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                goToSlide(currentSlide);
+            }
+
+            // Event listeners para botones
+            nextButton.addEventListener('click', nextSlide);
+            prevButton.addEventListener('click', prevSlide);
+
+
+            // Teclas de flecha
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') prevSlide();
+                if (e.key === 'ArrowRight') nextSlide();
+            });
         });
-    }
-
-    function goToSlide(index) {
-        currentSlide = index;
-        container.style.transform = `translateX(-${currentSlide * 100}%)`;
-        updateDots();
-    }
-
-    function nextSlide() {
-        currentSlide = (currentSlide + 1) % slides.length;
-        goToSlide(currentSlide);
-    }
-
-    function prevSlide() {
-        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-        goToSlide(currentSlide);
-    }
-
-    // Event listeners para botones
-    nextButton.addEventListener('click', nextSlide);
-    prevButton.addEventListener('click', prevSlide);
-
-    
-    // Teclas de flecha
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') prevSlide();
-        if (e.key === 'ArrowRight') nextSlide();
-    });
-});
     </script>
 </body>
 
