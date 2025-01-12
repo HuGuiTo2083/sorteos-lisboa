@@ -38,7 +38,7 @@ body {
 }
 
 input{
-    width: 15%;
+    width: 150px;
     height: 70px;
     background-color: #eeecec;
     border: none;
