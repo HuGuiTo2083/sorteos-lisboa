@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(to bottom, #ffff, #eeecec, #c4c4c4);
+    background: linear-gradient(to bottom, #000000, #615435, #826a32);
     width: 100%;
     background-attachment: fixed;
     /* Hace que el fondo se mueva con el scroll */
@@ -41,7 +41,7 @@ body {
 }
 
 #btPedir{
-    background-color: #4d2671;
+    background-color: #efb810;
     border-radius: 1rem;
     color: white;
     font-size: 17px;
@@ -55,7 +55,7 @@ body {
     margin-top: 50px;
    width: 100%;
    height:1000px;
-   background-color: rgb(165, 94, 236);
+   background-color: #efb810;
    display: flex;
    justify-content: center;
    align-items: center;
@@ -74,8 +74,8 @@ body {
 }
 
 .dvImage img{
-    width: 50%;
-    height: 800px;
+    width: 80%;
+    height: 400px;
 }
 
 .dvForm{
@@ -97,7 +97,7 @@ body {
 input{
     width: 300px;
     height: 70px;
-    background-color: #e8c9f6;
+    background-color: #ecbf77;
     border: none;
     border-radius: 3rem;
    text-align: center;
@@ -149,9 +149,9 @@ input::placeholder{
 .btn-contador {
     width: 30px;
     height: 30px;
-    background-color: #a550f5;
+    background-color: #d3b51e;
     border: 2px solid #ccc;
-    color: white;
+    color: rgb(0, 0, 0);
     border-radius: 3px;
     cursor: pointer;
     display: flex;
@@ -173,7 +173,7 @@ input::placeholder{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 20px;
     font-weight: 700;
-    color:#4d2671;
+    color:#ffffff;
     text-align: center;;
 }
 
@@ -193,4 +193,8 @@ input::placeholder{
         margin-top: 100px;
         margin-left: 150px;
     }
+}
+
+p{
+    color: white;
 }

@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(to bottom, #ffff, #eeecec, #c4c4c4);
+    background: linear-gradient(to bottom, #000000, #615435, #826a32);
     width: 100%;
     background-attachment: fixed;
     /* Hace que el fondo se mueva con el scroll */
@@ -18,7 +18,7 @@ body {
   width: 350px;
   height: 300px;
   border-radius: 2rem;
-  background-color: #6a1e79;
+  background-color: #988227;
   position: relative;
   top: 100px;
   display: flex;
@@ -38,7 +38,7 @@ input{
     width: 100px;
     height: 50px;
     border-radius: 1rem;
-    border: solid rgb(119, 107, 123) 4px;
+    border: solid rgb(193, 175, 119) 4px;
     font-size: 15px;
     text-align: center;
 }
@@ -49,7 +49,7 @@ input::placeholder{
 }
 
 button{
-    background-color: #9b2cb1;
+    background-color: #b1a42c;
     cursor: pointer;
     border-radius: 2rem;
     color: white;
@@ -61,5 +61,5 @@ button{
 }
 
 button:hover{
-    background-color: #bc48d3;
+    background-color: #cbc25c;
 }

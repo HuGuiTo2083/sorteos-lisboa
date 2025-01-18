@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const usuario = inputs[0].value;
         const password = inputs[1].value;
         
-        if (usuario === 'admin' && password === '2083AlexAutos2083') {
+        if (usuario === 'admin' && password === '2083Lisboa2083') {
             window.location.href = 'admin.html';
         } else {
             alert('Usuario o contraseña incorrectos');
