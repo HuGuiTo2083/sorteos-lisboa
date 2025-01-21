@@ -2,7 +2,7 @@
   "name": "rifa-moto",
   "version": "1.0.0",
   "main": "server.js",
-  "type": "commonjs",
+  "type": "module",
   "engines": {
     "node": "18.x"
   },
