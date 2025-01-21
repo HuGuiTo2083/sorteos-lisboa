@@ -1,12 +1,13 @@
 // server.js
-const express = require('express');
-const fs = require('fs').promises;
-const fsSync = require('fs'); // Añade esta líne
-const path = require('path');
-const app = express();
-const nodemailer = require('nodemailer');
-const { Octokit } = require('@octokit/rest');
-require('dotenv').config();
+import express from 'express';
+import { promises as fs } from 'fs';
+import * as fsSync from 'fs';
+import path from 'path';
+import nodemailer from 'nodemailer';
+import { Octokit } from '@octokit/rest';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 
 class GitHubSync {
