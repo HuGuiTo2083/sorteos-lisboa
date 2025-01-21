@@ -129,9 +129,15 @@ const transporter = nodemailer.createTransport({
 // Define la ruta del archivo aquí, al inicio
 const pedidosPath = path.join(__dirname, 'pedidos.json');
 
+
+// Crear la instancia de la aplicación Express
+const app = express();
 // Middleware para parsear JSON y servir archivos estáticos
 app.use(express.json());
 app.use(express.static('public'));
+
+
+
 
 
 // Ruta para obtener todos los pedidos
