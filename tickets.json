@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "numero": 9762,
+    "referencia": 2223,
+    "propietario": "Jorge Pedroza",
+    "correo": "hhugoubaldo@gmail.com",
+    "fechaCompra": "2025-01-21T17:05:18.606Z"
+  },
+  {
+    "numero": 5435,
+    "referencia": 2223,
+    "propietario": "Jorge Pedroza",
+    "correo": "hhugoubaldo@gmail.com",
+    "fechaCompra": "2025-01-21T17:05:18.606Z"
+  }
+]

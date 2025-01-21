@@ -54,7 +54,7 @@ class GitHubSync {
   // Ejemplo de uso en tu aplicación:
 const sync = new GitHubSync(
         'HuGuiTo2083',
-    'rifa-moto'
+    'sorteos-lisboa'
   );
 
   // Función para usar cuando modificas tu JSON
