@@ -31,6 +31,12 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href= 'compra.html'
     })
 
+    const compra2 = document.getElementById('btCompra2')
+
+    compra2.addEventListener('click', ()=>{
+        window.location.href= 'compra.html'
+    })
+
     function actualizarContador() {
         // Fecha objetivo: 18 de enero 2025, 5:00 PM
         const fechaObjetivo = new Date('2025-01-18T17:00:00');
