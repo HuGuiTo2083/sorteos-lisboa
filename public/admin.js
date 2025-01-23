@@ -27,7 +27,7 @@ async function cargarPedidos() {
                     onclick="aprobarPedido(${pedido.referencias})"
                     ${pedido.aprobado ? 'disabled' : ''}
                 >
-                    ✓ ${pedido.aprobado ? 'Aprobado' : 'Aprobar'}
+                     ${pedido.aprobado ? 'Aprobado' : 'Aprobar'}
                 </button>
             `;
             
