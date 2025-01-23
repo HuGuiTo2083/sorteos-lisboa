@@ -1,19 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const slides = document.querySelectorAll('.slide1');
-    let currentSlide = 0;
-    console.log(slides)
-    function showSlide(n) {
-      slides[currentSlide].classList.remove('active1');
-      currentSlide = (n + slides.length) % slides.length;
-      slides[currentSlide].classList.add('active1');
-    }
     
-    function nextSlide() {
-      showSlide(currentSlide + 1);
-    }
-    
-    setInterval(nextSlide, 3000); // Cambio de imagen cada 5 segundos
 
 
 
@@ -126,6 +113,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // O llamarla directamente:
     // validarFormulario();
+
+
+
+
+
+
 
 
 });

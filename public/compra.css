@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(to bottom, #000000, #615435, #826a32);
+    background: linear-gradient(to bottom, rgb(255, 138, 138), white); 
     width: 100%;
     background-attachment: fixed;
     /* Hace que el fondo se mueva con el scroll */
@@ -11,37 +11,15 @@ body {
     margin: 0;
 }
 
-.carousel1 {
-    /* background-color: #5c339f; */
-    width: 500px;
-    height: 300px;
-    overflow: hidden;
-    position: relative;
-  }
-  .slide1 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 80%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    /* background-color: #826a32; */
-  }
-  .slide1.active1 {
-    opacity: 1;
-  }
-  .slide1 img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+
 
 #lbPagos{
 
  font-weight: 900;
- font-size: 12px;
+ font-size: 13px;
  margin-left: 30px;
+ color: #000000;
+ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
  
 }
 
@@ -68,7 +46,7 @@ body {
 }
 
 #btPedir{
-    background-color: #efb810;
+    background-color: #ef1010;
     border-radius: 1rem;
     color: white;
     font-size: 17px;
@@ -124,7 +102,7 @@ body {
 input{
     width: 300px;
     height: 70px;
-    background-color: #ecbf77;
+    background-color: #ec7777;
     border: none;
     border-radius: 3rem;
    text-align: center;
@@ -135,6 +113,7 @@ input{
 input::placeholder{
     text-align: center;
     font-size: 20px;
+    color: #ffffff;
 }
 
 
@@ -176,9 +155,9 @@ input::placeholder{
 .btn-contador {
     width: 30px;
     height: 30px;
-    background-color: #d3b51e;
+    background-color: #d31e1e;
     border: 2px solid #ccc;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     border-radius: 3px;
     cursor: pointer;
     display: flex;
@@ -200,7 +179,7 @@ input::placeholder{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 20px;
     font-weight: 700;
-    color:#ffffff;
+    color:#000000;
     text-align: center;;
 }
 
@@ -225,3 +204,59 @@ input::placeholder{
 p{
     color: white;
 }
+
+
+.carousel {
+    /* background-color: #333; */
+     display: flex;
+     justify-content: center;
+     align-items: center;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 300px;
+    /* background-color: #5c339f; */
+  }
+  
+  .carousel-image {
+    /* background-color: #000000; */
+    position: absolute;
+    
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    
+  }
+  
+  .carousel-image.active {
+    opacity: 1;
+  }
+ 
+  .dvReferences  .label {
+    font-size: clamp(10px, 5vw, 25px);
+    font-weight: 900;
+    font-family: comic;
+    color: #ffffff
+}
+
+
+
+  .carousel-button {
+    position: absolute;
+    top: 50%;
+     border-radius: 1rem;
+     opacity: 0.5;
+    font-size: 24px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+  }
+  
+  .carousel-button.prev {
+    left: 10px;
+  }
+  
+  .carousel-button.next {
+    right: 10px;
+  }

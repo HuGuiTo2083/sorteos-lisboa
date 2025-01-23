@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(to bottom, #000000, #615435, #826a32);
+    background: linear-gradient(to bottom, #faa6a6, #ffffff);
     width: 100%;
     background-attachment: fixed;
     /* Hace que el fondo se mueva con el scroll */
@@ -23,8 +23,8 @@ body {
 }
 
 .pendiente{
-    border: solid rgb(88, 57, 18) 5px;
-    background-color: #f7e5b0;
+    border: solid rgb(88, 18, 18) 5px;
+    background-color: #f7b0b0;
 }
 
 @font-face {
