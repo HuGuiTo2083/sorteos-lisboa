@@ -427,6 +427,7 @@ footer {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 28px;
     font-weight: 900;
+    margin-top: 500px;
     color: #ffffff;
     background-color: #ca9533;
     display: flex;
