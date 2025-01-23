@@ -11,10 +11,37 @@ body {
     margin: 0;
 }
 
+.carousel1 {
+    /* background-color: #5c339f; */
+    width: 500px;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+  }
+  .slide1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    /* background-color: #826a32; */
+  }
+  .slide1.active1 {
+    opacity: 1;
+  }
+  .slide1 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
 #lbPagos{
 
  font-weight: 900;
  font-size: 12px;
+ margin-left: 30px;
  
 }
 
