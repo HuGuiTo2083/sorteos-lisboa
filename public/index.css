@@ -411,7 +411,7 @@ footer {
     width: 100%;
     margin-bottom: 100px;
     display: grid;
-    background-color: #5c339f;
+    /* background-color: #5c339f; */
     grid-template-columns: minmax(300px, 1fr);
     grid-template-rows: minmax(1800px, 1fr);
     padding-left: 10px;
