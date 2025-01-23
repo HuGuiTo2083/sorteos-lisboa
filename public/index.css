@@ -86,107 +86,71 @@ a {
 
 .dvReferences {
     background: linear-gradient(90deg, #000000, #efb810);
-    width: 100%;
- 
     
-        
     /* Gradiente de sombra hacia la derecha */
     display: grid;
     grid-template-columns: minmax(200px, 1fr);
-    grid-template-rows: minmax(80px, 2fr) minmax(70px, 1fr) 
+    grid-template-rows: minmax(80px, 2fr)  minmax(70px, 1fr)
      minmax(60px, 280px) minmax(70px, 1fr)
-      minmax(60px, 280px)  minmax(70px, 1fr)
-        minmax(60px, 280px)  minmax(70px, 1fr)
+        minmax(70px, 1fr)
+        minmax(70px, 1fr)
           minmax(70px, 1fr);
     gap: 20px;
     padding-top: 10px;
     margin-top: 100px;
 }
 
-
-/* ---- */
-.carousel1 {
-    /* background-color: #5c339f; */
-    width: 500px;
-    height: 300px;
-    overflow: hidden;
+.carousel {
+     display: flex;
+     justify-content: center;
+     align-items: center;
     position: relative;
+    overflow: hidden;
+    /* background-color: #5c339f; */
   }
-  .slide1 {
+  
+  .carousel-image {
+    /* background-color: #000000; */
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 80%;
+    
+    width: 100%;
     height: 100%;
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
-    /* background-color: #826a32; */
+    
   }
-  .slide1.active1 {
+  
+  .carousel-image.active {
     opacity: 1;
   }
-  .slide1 img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  
+  .carousel-button {
+    position: absolute;
+    top: 50%;
+   
+    font-size: 24px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+  }
+  
+  .carousel-button.prev {
+    left: 10px;
+  }
+  
+  .carousel-button.next {
+    right: 10px;
   }
 
 
 /* ---- */
 
-.carousel12 {
-    /* background-color: #5c339f; */
-    width: 500px;
-    height: 300px;
-    overflow: hidden;
-    position: relative;
-  }
-  .slide12 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 80%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    /* background-color: #826a32; */
-  }
-  .slide12.active12 {
-    opacity: 1;
-  }
-  .slide12 img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+
+/* ---- */
 
 /* ----- */
 
-.carousel123 {
-    /* background-color: #5c339f; */
-    width: 500px;
-    height: 300px;
-    overflow: hidden;
-    position: relative;
-  }
-  .slide123 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 80%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    /* background-color: #826a32; */
-  }
-  .slide123.active123 {
-    opacity: 1;
-  }
-  .slide123 img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+
 
 /* ---- */
 @font-face {
@@ -316,48 +280,7 @@ footer {
 }
 
 
-.carousel-container {
-    display: flex;
-    transition: transform 0.5s ease;
-    touch-action: pan-x;
-}
 
-.carousel-slide {
-    flex: 0 0 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.carousel-slide img {
-    width: 70%;
-    height: 400px;
-    
-
-}
-
-.carousel-button {
-    position: absolute;
-
-    transform: translateY(-50%);
-    background: rgb(0, 0, 0);
-    color: white;
-    border: none;
-    padding: 1rem;
-    cursor: pointer;
-    width: 50px;
-    z-index: 10;
-    font-weight: 900;
-    border-radius: 50%;
-}
-
-.carousel-button:hover {
-    background: rgba(0, 0, 0, 0.8);
-}
-
-.prev-button {
-    left: 1rem;
-}
 
 #btCompra{
     width: 80px;
@@ -584,10 +507,7 @@ p{
         padding-top: 20px;
     }
 
-    .dvI1 {
-      
-    }
-
+  
 }
 
 @media screen and (max-width:388px) {

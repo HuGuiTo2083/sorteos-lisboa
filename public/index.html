@@ -71,46 +71,24 @@
         </div>
 
 
-
-        <div class="carousel1">
-            <div class="slide1">
-                <img src="images/premio 1.png" alt="Imagen 1">
-            </div>
-            <div class="slide1">
-                <img src="images/premio1_2.png" alt="Imagen 2">
-            </div>
+        
+        <div class="carousel">
+            <img class="carousel-image active" src="images/premio 1.png" style="width: 200px; height: 200px;" alt="Image 1">
+            <img class="carousel-image" src="images/premio 2.png" style="width: 200px; height: 200px;" alt="Image 2">
+            <img class="carousel-image" src="images/Premio 3.png" style="width: 200px; height: 200px;" alt="Image 3">
+            <div class="carousel-button prev" onclick="prevImage()">&#8249;</div>
+            <div class="carousel-button next" onclick="nextImage()">&#8250;</div>
         </div>
+        
         <div class="dvN">
 
-            <label class="l1">¡ 1ER PREMIO: Moto Bera SBR Azul !</label>
-
+            <label id="lb1" class="l1">¡ 1ER PREMIO: Moto Bera SBR Azul !</label>
         </div>
 
-
-
-        <div class="carousel12">
-            <div class="slide12">
-                <img src="images/premio 2.png" alt="Imagen 1">
-            </div>
-            <div class="slide12">
-                <img src="images/Premio 2_2.png" alt="Imagen 2">
-            </div>
-        </div>
 
         <div class="dvN">
 
             <label id="lb1" class="l1">¡ 2DO PREMIO: Moto Bera SBR Gris !</label>
-        </div>
-
-
-
-        <div class="carousel123">
-            <div class="slide123">
-                <img src="images/Premio 3.png" alt="Imagen 1">
-            </div>
-            <div class="slide123">
-                <img src="images/Premio 3_2.png" alt="Imagen 2">
-            </div>
         </div>
 
         <div class="dvN">
@@ -157,7 +135,7 @@
         <button id="btCompra">Compra rápida</button>
 
     </div>
-      
+
     <div id="references2" style="display: none;">
         <div class="carousel-container">
             <div class="carousel-slide">
@@ -192,7 +170,7 @@
         <button class="carousel-button next-button">→</button>
         <div class="dots-container"></div>
     </div>
-<div class="sep"></div>
+    <div class="sep"></div>
 
     <div class="information2">
         <p>
@@ -291,31 +269,7 @@
         <label id="lbconta"></label>
     </div>
 
-    <!-- <div class="dvInfoFinal">
-        <p>
-            <span>
-                ¡Serás el GRAN GANADOR y 
-                <br>
-                ayudarás a una causa BENÉFICA!
-            </span>
-            <br> <br>
-            🎉 ¡Tu participación tiene doble premio! 🎉
-            <br>
-            No solo tendrás la oportunidad de GANAR
-            <br>
-            increíbles premios en nuestra rifa, sino
-            <br>
-            que también estarás apoyando una causa
-            <br>
-            benéfica. 💖 Al finalizar, donaremos un
-            <br>
-            porcentaje del dinero recaudado para
-            <br>
-            ayudar a quienes más lo necesitan. 🙌
-        </p>
-
-
-    </div> -->
+    
 
     <footer>
 
@@ -325,62 +279,25 @@
     <script src="index.js"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const container = document.querySelector('.carousel-container');
-            const slides = document.querySelectorAll('.carousel-slide');
-            const prevButton = document.querySelector('.prev-button');
-            const nextButton = document.querySelector('.next-button');
-            const dotsContainer = document.querySelector('.dots-container');
-
-            let currentSlide = 0;
-            let startX = 0;
-            let startY = 0;
-            let isDragging = false;
-            let isHorizontalDrag = null;
-
-            // Crear puntos indicadores
-            slides.forEach((_, index) => {
-                const dot = document.createElement('div');
-                dot.classList.add('dot');
-                if (index === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => goToSlide(index));
-                dotsContainer.appendChild(dot);
-            });
-
-            function updateDots() {
-                document.querySelectorAll('.dot').forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentSlide);
-                });
-            }
-
-            function goToSlide(index) {
-                currentSlide = index;
-                container.style.transform = `translateX(-${currentSlide * 100}%)`;
-                updateDots();
-            }
-
-            function nextSlide() {
-                currentSlide = (currentSlide + 1) % slides.length;
-                goToSlide(currentSlide);
-            }
-
-            function prevSlide() {
-                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-                goToSlide(currentSlide);
-            }
-
-            // Event listeners para botones
-            nextButton.addEventListener('click', nextSlide);
-            prevButton.addEventListener('click', prevSlide);
-
-
-            // Teclas de flecha
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowLeft') prevSlide();
-                if (e.key === 'ArrowRight') nextSlide();
-            });
-        });
-    </script>
+        let currentIndex = 0;
+        const images = document.querySelectorAll(".carousel-image");
+        
+        function showImage(index) {
+          images.forEach((image, i) => {
+            image.classList.toggle("active", i === index);
+          });
+        }
+        
+        function prevImage() {
+          currentIndex = (currentIndex - 1 + images.length) % images.length;
+          showImage(currentIndex);
+        }
+        
+        function nextImage() {
+          currentIndex = (currentIndex + 1) % images.length;
+          showImage(currentIndex);
+        }
+      </script>
 </body>
 
 </html>
