@@ -93,13 +93,102 @@ a {
     /* Gradiente de sombra hacia la derecha */
     display: grid;
     grid-template-columns: minmax(200px, 1fr);
-    grid-template-rows: minmax(80px, 2fr) minmax(70px, 1fr) minmax(70px, 1fr) minmax(150px, 4fr) minmax(150px, 4fr)
-     minmax(70px, 1fr) minmax(150px, 4fr) minmax(150px, 4fr)  minmax(70px, 1fr) minmax(150px, 4fr) minmax(150px, 4fr) minmax(70px, 1fr);
+    grid-template-rows: minmax(80px, 2fr) minmax(70px, 1fr) 
+     minmax(60px, 280px) minmax(70px, 1fr)
+      minmax(60px, 280px)  minmax(70px, 1fr)
+        minmax(60px, 280px)  minmax(70px, 1fr)
+          minmax(70px, 1fr);
     gap: 20px;
     padding-top: 10px;
     margin-top: 100px;
 }
 
+
+/* ---- */
+.carousel1 {
+    /* background-color: #5c339f; */
+    width: 500px;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+  }
+  .slide1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    /* background-color: #826a32; */
+  }
+  .slide1.active1 {
+    opacity: 1;
+  }
+  .slide1 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+
+/* ---- */
+
+.carousel12 {
+    /* background-color: #5c339f; */
+    width: 500px;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+  }
+  .slide12 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    /* background-color: #826a32; */
+  }
+  .slide12.active12 {
+    opacity: 1;
+  }
+  .slide12 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+/* ----- */
+
+.carousel123 {
+    /* background-color: #5c339f; */
+    width: 500px;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+  }
+  .slide123 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    /* background-color: #826a32; */
+  }
+  .slide123.active123 {
+    opacity: 1;
+  }
+  .slide123 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+/* ---- */
 @font-face {
     font-family: comic;
     src: url('fonts/6680-fontps.ttf');
@@ -185,7 +274,7 @@ footer {
 .information {
     width: 100%;
     height: 700px;
-    margin-top: 70px;
+    margin-top: 0px;
     display: flex;
     justify-content: center;
     display: flex;
@@ -270,6 +359,15 @@ footer {
     left: 1rem;
 }
 
+#btCompra{
+    width: 80px;
+    height: 50px;
+    border-radius: 2rem;
+    background-color: #ca9533;
+    color: white;
+    cursor: pointer;
+}
+
 .next-button {
     right: 1rem;
 }
@@ -311,9 +409,13 @@ footer {
 
 .information2 {
     width: 100%;
-    height: 920px;
+    height: 1350px;
     margin-bottom: 100px;
     padding-left: 10px;
+}
+
+.dvN{
+    text-align: center;
 }
 
 .dvContador {
@@ -342,6 +444,12 @@ footer {
     font-size: 19px;
     color: #fffdff;
 
+}
+
+.sep{
+    width: 100%;
+    height:30px;
+    background-color: #efb810;
 }
 
 .dvInfoFinal p {

@@ -4,6 +4,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const ms = document.getElementById('btMessage')
 
+
+
+
+
     ig.addEventListener('click', () => {
        window.location.href = "https://www.instagram.com/aleautos1?igsh=a2hwYTF4aHo5endk"
 
@@ -19,6 +23,12 @@ document.addEventListener('DOMContentLoaded', function() {
         this.lastChild.window.location.href = "mailto:Boxandlabel2@gmail.com"
 
         
+    })
+
+    const compra = document.getElementById('btCompra')
+
+    compra.addEventListener('click', ()=>{
+        window.location.href= 'compra.html'
     })
 
     function actualizarContador() {
@@ -54,6 +64,54 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Primera actualización inmediata
     actualizarContador();
+
+    const slides = document.querySelectorAll('.slide1');
+    let currentSlide = 0;
+    
+    function showSlide(n) {
+      slides[currentSlide].classList.remove('active1');
+      currentSlide = (n + slides.length) % slides.length;
+      slides[currentSlide].classList.add('active1');
+    }
+    
+    function nextSlide() {
+      showSlide(currentSlide + 1);
+    }
+    
+    setInterval(nextSlide, 3000); // Cambio de imagen cada 5 segundos
+
+
+    const slides2 = document.querySelectorAll('.slide12');
+    let currentSlide2 = 0;
+    
+    function showSlide2(n) {
+      slides2[currentSlide2].classList.remove('active12');
+      currentSlide2 = (n + slides2.length) % slides2.length;
+      slides2[currentSlide2].classList.add('active12');
+    }
+    
+    function nextSlide2() {
+      showSlide2(currentSlide2 + 1);
+    }
+    
+    setInterval(nextSlide2, 3000); // Cambio de imagen cada 5 segundos
+
+
+    const slides23 = document.querySelectorAll('.slide123');
+    let currentSlide23 = 0;
+    
+    function showSlide23(n) {
+      slides23[currentSlide23].classList.remove('active123');
+      currentSlide23 = (n + slides23.length) % slides23.length;
+      slides23[currentSlide23].classList.add('active123');
+    }
+    
+    function nextSlide23() {
+      showSlide23(currentSlide2 + 1);
+    }
+    
+    setInterval(nextSlide23, 3000); // Cambio de imagen cada 5 segundos
+
 
 
 });
