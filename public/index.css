@@ -124,7 +124,7 @@ a {
     display: grid;
     grid-template-columns: minmax(200px, 1fr);
     grid-template-rows: minmax(80px, 1fr)  minmax(70px, 1fr)
-     minmax(60px, 230px)
+     minmax(60px, 270px)
       minmax(70px, 0.8fr)
         minmax(70px, 0.8fr)
         minmax(70px, 0.8fr)
@@ -409,7 +409,7 @@ font-family: pri;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 28px;
     font-weight: 900;
-    margin-top: 560px;
+    margin-top: 580px;
     color: #ffffff;
     background-color: #da4141;
     display: flex;
