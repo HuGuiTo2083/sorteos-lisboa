@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const ig = document.getElementById('btInsta')
     const fb = document.getElementById('btFacebook')
 
-    const ms = document.getElementById('btMessage')
 
 
 
@@ -19,11 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     })
 
-    ms.addEventListener('click', () => {
-        this.lastChild.window.location.href = "mailto:Boxandlabel2@gmail.com"
-
-        
-    })
+  
 
     const compra = document.getElementById('btCompra')
 
