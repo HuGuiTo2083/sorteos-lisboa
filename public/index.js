@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Si ya pasó la fecha
         if (diferencia < 0) {
-            document.getElementById('lbconta').innerHTML = "¡Tiempo cumplido!";
+            document.getElementById('lbconta').innerHTML = "¡ Tiempo cumplido !";
             return;
         }
         

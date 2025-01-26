@@ -170,11 +170,16 @@ a {
     color: #ffffff
 }
 
+@font-face {
+    font-family: laser;
+    src: url('fonts/Larsseit.otf');
+}
+
 .l11{
     font-size: clamp(15px, 4vw, 25px);
     color: #000;
     font-weight: 900;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: laser;
     text-align: center;
 }
 
@@ -184,11 +189,15 @@ a {
     top: 50%;
      border-radius: 1rem;
      opacity: 0.5;
-    font-size: 24px;
+    font-size: 40px;
+    width: 40px;
+    text-align: center;
     padding: 10px;
     background-color: rgba(255, 255, 255, 0.5);
     cursor: pointer;
   }
+
+
   
   .carousel-button.prev {
     left: 10px;
@@ -250,6 +259,10 @@ footer {
    
 }
 
+#lbConta{
+    font-family: pri;
+   
+}
 
 
 #lbAlex{
@@ -450,14 +463,17 @@ font-family: pri;
 footer label {
     color: white;
     font-size: 20px;
-    font-weight: 900;
     text-align: center;
+    font-family: laser;
 }
 
 p{
     color: white;
 }
 
+.contaa{
+    font-family: pri;
+}
 
 @media screen and (max-width:350px) {
     
