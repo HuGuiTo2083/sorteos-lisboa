@@ -9,13 +9,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     ig.addEventListener('click', () => {
-       window.location.href = "https://www.instagram.com/aleautos1?igsh=a2hwYTF4aHo5endk"
+       window.location.href = "https://www.instagram.com/finca_lisboa_ranch?igsh=dXRqbGk3cW9qNnZ6"
 
     })
 
     fb.addEventListener('click', () => {
    
-        window.location.href = "https://wa.me/+5804121360306"
+        window.location.href = "https://wa.me/+584243131639"
 
     })
 
