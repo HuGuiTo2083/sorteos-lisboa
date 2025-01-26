@@ -42,10 +42,44 @@ a {
     color: rgb(0, 0, 0)
 }
 
+.dvLo{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    
+}
+
+@font-face {
+    font-family: vi;
+    src: url('fonts/VIRUST.ttf');
+}
+
+@font-face {
+    font-family: vi2;
+    src: url('fonts/Air\ Travelers\ Personal\ Use.otf');
+}
+
+@font-face {
+    font-family: pri;
+    src: url('fonts/Pricedown\ Bl.otf');
+}
+
+.iq{
+    font-family: pri;
+    font-size: 27px;
+    color: #da4141;
+    font: italic;
+}
+
+.dvLo img{
+  height: 50px;
+  object-fit: cover;
+}
 
 #imgLogo {
     object-fit: cover;
-    height: 80%;
+    height: 30%;
     margin-left: 30px;
     border-radius: 1rem;
 }
@@ -221,8 +255,7 @@ footer {
 #lbAlex{
     font-size: 40px;
     text-align: center;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: 800;
+font-family: pri;
     color: #000;
 }
 
