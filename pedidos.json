@@ -28,5 +28,15 @@
     "aprobado": true,
     "boletos": 1,
     "precioTotal": 98
+  },
+  {
+    "correo": "hhugoubaldo@gmail.com",
+    "nombre": "Hugo Ubaldo",
+    "apellido": "Hernandez",
+    "referencias": 9090,
+    "numero": 4779082327,
+    "aprobado": false,
+    "boletos": 2,
+    "precioTotal": 2
   }
 ]
