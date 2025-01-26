@@ -173,6 +173,16 @@
         <button class="carousel-button next-button">→</button>
         <div class="dots-container"></div>
     </div>
+
+    
+    <div class="carousel2">
+        <img class="carousel-image2 active2" src="images/one1.jpg" style="width: 270px; height: 250px;" alt="Image 1">
+        <img class="carousel-image2" src="images/Two1.jpg" style="width: 270px; height: 250px;" alt="Image 2">
+        <img class="carousel-image2" src="images/three1.jpg" style="width: 250px; height: 250px;" alt="Image 3">
+        <div class="carousel-button2 prev2" onclick="prevImage2()">&#8249;</div>
+        <div class="carousel-button2 next2" onclick="nextImage2()">&#8250;</div>
+    </div>
+
     <div class="sep"></div>
     <marquee class="iq" scrollamount="10">Sigue estos pasos para participar !</marquee>
 
@@ -304,6 +314,31 @@
           currentIndex = (currentIndex + 1) % images.length;
           showImage(currentIndex);
         }
+      
+
+
+        // ---
+
+        let currentIndex2 = 0;
+        const images2 = document.querySelectorAll(".carousel-image2");
+        
+        function showImage2(index) {
+          images2.forEach((image, i) => {
+            image.classList.toggle("active2", i === index);
+          });
+        }
+        
+        function prevImage2() {
+          currentIndex2 = (currentIndex2 - 1 + images2.length) % images2.length;
+          showImage2(currentIndex2);
+        }
+        
+        function nextImage2() {
+          currentIndex2 = (currentIndex2 + 1) % images2.length;
+          showImage2(currentIndex2);
+        }
+
+
       </script>
 </body>
 

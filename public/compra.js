@@ -8,21 +8,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnIncrementar = document.getElementById('incrementar');
     const btnDecrementar = document.getElementById('decrementar');
     const labelPrecio = document.getElementById('precio');
+    const labelPrecio2 = document.getElementById('precio2');
     const success = document.getElementById('dvSuccess');
     const PRECIO_BASE = 1; // Precio base por unidad
-
+    const PRECIO_BASE_BS = 56.58;
     let cantidad = parseInt(input.value);
 
       function actualizarPrecio() {
         cantidad = parseInt(input.value);
         const precioTotal = cantidad * PRECIO_BASE;
+        const precioTotal2 = cantidad * PRECIO_BASE_BS;
+        labelPrecio2.textContent = `${precioTotal2} Bs`;
+
         labelPrecio.textContent = `${precioTotal} USD`;
     }
 
 
     // Asegurar valor mínimo de 1
     input.addEventListener('change', () => {
-        if (input.value < 1) input.value = 1;
+        if (input.value < 2) input.value = 2;
     });
 
     btnIncrementar.addEventListener('click', () => {
@@ -32,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     btnDecrementar.addEventListener('click', () => {
         const nuevoValor = parseInt(input.value) - 1;
-        if (nuevoValor >= 1) {
+        if (nuevoValor >= 2) {
             input.value = nuevoValor;
             actualizarPrecio();
         }
