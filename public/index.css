@@ -474,6 +474,7 @@ font-family: pri;
     position: fixed;
     right: 7px;
     bottom: 7px;
+    z-index: 10;
     
 }
 
