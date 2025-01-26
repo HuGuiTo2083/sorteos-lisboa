@@ -79,9 +79,8 @@ a {
 
 #imgLogo {
     object-fit: cover;
-    height: 30%;
+    height: 40%;
     margin-left: 30px;
-    border-radius: 1rem;
 }
 
 .dvButtonsContact {
