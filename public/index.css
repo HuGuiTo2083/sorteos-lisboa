@@ -200,6 +200,15 @@ a {
  
   /* --- */
 
+
+.mde{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+}
+
   .carousel-button2 {
     position: absolute;
     top: 50%;

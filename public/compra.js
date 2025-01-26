@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const labelPrecio2 = document.getElementById('precio2');
     const success = document.getElementById('dvSuccess');
     const PRECIO_BASE = 1; // Precio base por unidad
-    const PRECIO_BASE_BS = 56.58;
+    const PRECIO_BASE_BS = 67;
     let cantidad = parseInt(input.value);
 
       function actualizarPrecio() {
