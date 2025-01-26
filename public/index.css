@@ -396,7 +396,7 @@ font-family: pri;
     grid-template-columns: minmax(300px, 1fr);
     grid-template-rows: minmax(1800px, 1fr);
     padding-left: 10px;
-    background-color: #fad6d4;
+    /* background-color: #fad6d4; */
 }
 
 .dvN{
@@ -409,7 +409,7 @@ font-family: pri;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 28px;
     font-weight: 900;
-    margin-top: 520px;
+    margin-top: 560px;
     color: #ffffff;
     background-color: #da4141;
     display: flex;
