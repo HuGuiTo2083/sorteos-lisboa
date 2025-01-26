@@ -396,6 +396,7 @@ font-family: pri;
     grid-template-columns: minmax(300px, 1fr);
     grid-template-rows: minmax(1800px, 1fr);
     padding-left: 10px;
+    background-color: #fad6d4;
 }
 
 .dvN{
@@ -471,8 +472,16 @@ p{
     color: white;
 }
 
+.red{
+    color: rgb(226, 68, 68);
+}
+
+.information2 span{
+    color: rgb(226, 68, 68);
+}
+
 .contaa{
-    font-family: pri;
+    font-family: laser;
 }
 
 @media screen and (max-width:350px) {
