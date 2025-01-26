@@ -9,14 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnDecrementar = document.getElementById('decrementar');
     const labelPrecio = document.getElementById('precio');
     const success = document.getElementById('dvSuccess');
-    const PRECIO_BASE = 98; // Precio base por unidad
+    const PRECIO_BASE = 1; // Precio base por unidad
 
     let cantidad = parseInt(input.value);
 
       function actualizarPrecio() {
         cantidad = parseInt(input.value);
         const precioTotal = cantidad * PRECIO_BASE;
-        labelPrecio.textContent = `${precioTotal} bs`;
+        labelPrecio.textContent = `${precioTotal} USD`;
     }
 
 
