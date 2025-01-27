@@ -1,11 +1,6 @@
 body {
 background-color: #ffffff;    width: 100%;
-    background-attachment: fixed;
-    /* Hace que el fondo se mueva con el scroll */
-    background-size: cover;
-    /* Asegura que el fondo cubra toda la pantalla */
-    background-repeat: no-repeat;
-    /* El fondo no se repite */
+  
     overflow-x: hidden;
     margin: 0;
 }
@@ -65,7 +60,7 @@ a {
     src: url('fonts/Pricedown\ Bl.otf');
 }
 .dvVideo{
-    
+    position: relative;
     /* background-color: #11cd3d; */
     display: grid;
     grid-template-columns: 1fr;
@@ -99,7 +94,9 @@ a {
 
 .space{
     width: 100%;
-    height: 30px;
+    height: 100px;
+    display: flex;
+    align-items: center;
 }
 
 @font-face {
@@ -133,7 +130,7 @@ a {
     width: 100%;
     display: flex;
     justify-content: center;
-    gap: 20px;
+   
     align-items: center;
 }
 
