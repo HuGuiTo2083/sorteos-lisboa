@@ -121,8 +121,8 @@ async function guardarTickets(nuevosTickets) {
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'autosalex95@gmail.com', // Tu correo Gmail
-        pass: 'mbxu ehuc hgrs kiks' // Contraseña de aplicación de Gmail
+        user: 'sorteolisboaranch.0@gmail.com', // Tu correo Gmail
+        pass: 'ndtr zliq scpl tqud' // Contraseña de aplicación de Gmail
     }
 });
 
