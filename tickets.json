@@ -33,5 +33,26 @@
     "propietario": "Hugo Ubaldo Hernandez",
     "correo": "hhugoubaldo@gmail.com",
     "fechaCompra": "2025-01-26T23:03:00.278Z"
+  },
+  {
+    "numero": 6508,
+    "referencia": 2020,
+    "propietario": "Hugo Hola",
+    "correo": "hhugoubaldoh@gmail.com",
+    "fechaCompra": "2025-01-27T00:45:00.939Z"
+  },
+  {
+    "numero": 6005,
+    "referencia": 2020,
+    "propietario": "Hugo Hola",
+    "correo": "hhugoubaldoh@gmail.com",
+    "fechaCompra": "2025-01-27T00:45:00.939Z"
+  },
+  {
+    "numero": 1397,
+    "referencia": 2020,
+    "propietario": "Hugo Hola",
+    "correo": "hhugoubaldoh@gmail.com",
+    "fechaCompra": "2025-01-27T00:45:00.939Z"
   }
 ]
