@@ -38,5 +38,15 @@
     "aprobado": true,
     "boletos": 2,
     "precioTotal": 2
+  },
+  {
+    "correo": "hhugoubaldoh@gmail.com",
+    "nombre": "Hugo",
+    "apellido": "Hola",
+    "referencias": 2020,
+    "numero": 4779082327,
+    "aprobado": false,
+    "boletos": 3,
+    "precioTotal": 3
   }
 ]
