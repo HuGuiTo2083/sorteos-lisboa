@@ -64,12 +64,39 @@ a {
     font-family: pri;
     src: url('fonts/Pricedown\ Bl.otf');
 }
+.dvVideo{
+    width: 100%;
+    height: 250px;
+    /* background-color: #11cd3d; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+   
+}
+
+.dvVideo video{
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1;
+}
+
+@font-face {
+    font-family: tw;
+    src: url('fonts/Twentieth\ Century\ Bold.ttf');
+}
 
 .iq{
-    font-family: pri;
-    font-size: 27px;
-    color: #da4141;
-    font: italic;
+    font-family: tw;
+    font-weight: 900;
+    font-size: 35px;
+    color: #ff0000;
+    text-shadow: 1px 1px 2px rgba(255, 0, 0, 0.3);
+
 }
 
 .dvLo img{
@@ -97,6 +124,10 @@ a {
     left: 7px;
 }
 
+svg{
+    fill: white;
+}
+
 .circularButton {
     width: 60px;
     height: 60px;
@@ -104,15 +135,15 @@ a {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    border: solid #000 3px;
+    border: solid #ffffff 5px;
     transition: 0.3s;
     cursor: pointer;
 }
 
 .circularButton:hover,
 .circularButton:hover~.icon {
-    border: solid #f74c4c 3px;
-    fill: #f74c4c;
+    border: solid #ffffff 3px;
+    fill: #ffffff;
 
 }
 
@@ -335,7 +366,8 @@ footer {
 #lbAlex{
     font-size: 40px;
     text-align: center;
-font-family: pri;
+font-family: tw;
+font-weight: 900;
     color: #000;
 }
 
@@ -456,8 +488,13 @@ font-family: pri;
 }
 
 #btInsta{
-    background: linear-gradient(45deg, #8766d6, #f186d3, #ffa187, #ffc337, #ff7d51);
+    /* background: linear-gradient(45deg, #8766d6, #f186d3, #ffa187, #ffc337, #ff7d51); */
+  border:solid #ff0000 7px;
 
+}
+
+#ins{
+    fill:#ff0000;
 }
 
 .information2 {

@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div class="header" >
+    <div class="header">
         <img src="images/lisboa-logo.jpg" id="imgLogo">
 
 
@@ -25,10 +25,14 @@
 
 
     </div>
-
-    <div class="dvButtonsContact">
+    <div class="dvVideo">
+       <video autoplay muted loop>
+        <source src="images/fondoVideo.mp4" type="video/mp4">
+       
+       </video>
+       <div class="dvButtonsContact">
         <span class="circularButton" id="btInsta">
-            <svg width="40" height="40" viewBox="0 0 20 20" arial-hidden="true" class="icon">
+            <svg width="40" height="40" viewBox="0 0 20 20" arial-hidden="true" class="icon" id="ins">
                 <circle cx="10" cy="10" r="3.3"></circle>
                 <path
                     d="M14.2,0H5.8C2.6,0,0,2.6,0,5.8v8.3C0,17.4,2.6,20,5.8,20h8.3c3.2,0,5.8-2.6,5.8-5.8V5.8C20,2.6,17.4,0,14.2,0zM10,15c-2.8,0-5-2.2-5-5s2.2-5,5-5s5,2.2,5,5S12.8,15,10,15z M15.8,5C15.4,5,15,4.6,15,4.2s0.4-0.8,0.8-0.8s0.8,0.4,0.8,0.8S16.3,5,15.8,5z">
@@ -37,19 +41,12 @@
 
         </span>
 
-        
-
-        <!-- <span class="circularButton" id="btMessage">
-            <svg width="40" height="40" viewBox="0 0 20 20" arial-hidden="true" class="icon">
-                <path
-                    d="M10,10.1L0,4.7C0.1,3.2,1.4,2,3,2h14c1.6,0,2.9,1.2,3,2.8L10,10.1z M10,11.8c-0.1,0-0.2,0-0.4-0.1L0,6.4V15c0,1.7,1.3,3,3,3h4.9h4.3H17c1.7,0,3-1.3,3-3V6.4l-9.6,5.2C10.2,11.7,10.1,11.7,10,11.8z">
-                </path>
-            </svg>
-
-        </span> -->
-
+    </div>
+    <marquee class="iq" scrollamount="10">Sorteos Lisboa Ranch</marquee>
 
     </div>
+
+
 
     <span class="circularButton" id="btFacebook">
         <svg width="200" height="100" viewBox="0 0 40 30" arial-hidden="true" class="icon" id="svgW">
@@ -61,11 +58,8 @@
         </g>
     </span>
 
-    <div class="dvLo">
-        <img src="images/lisboa-logo.jpg">
-    </div>
 
-    <marquee class="iq" scrollamount="10">Sorteos Lisboa Ranch</marquee>
+
 
     <div class="dvReferences">
         <div class="dvN">
@@ -85,7 +79,7 @@
             <div class="carousel-button prev" onclick="prevImage()">&#8249;</div>
             <div class="carousel-button next" onclick="nextImage()">&#8250;</div>
         </div>
-        
+
         <div class="dvN">
 
             <label id="lb1" class="l11">¡ 1ER PREMIO: Moto Bera SBR Azul !</label>
@@ -93,7 +87,7 @@
 
         <div class="dvN">
 
-            <label  class="l11">¡ 2DO PREMIO: Moto Bera SBR Gris !</label>
+            <label class="l11">¡ 2DO PREMIO: Moto Bera SBR Gris !</label>
         </div>
 
         <div class="dvN">
@@ -176,7 +170,7 @@
         <div class="dots-container"></div>
     </div>
 
-    
+
     <div class="carousel2">
         <img class="carousel-image2 active2" src="images/one1.jpg" style="width: 270px; height: 250px;" alt="Image 1">
         <img class="carousel-image2" src="images/Two1.jpg" style="width: 270px; height: 250px;" alt="Image 2">
@@ -292,7 +286,7 @@
         <label id="lbconta" class="contaa"></label>
     </div>
 
-    
+
 
     <footer>
 
@@ -304,48 +298,48 @@
     <script>
         let currentIndex = 0;
         const images = document.querySelectorAll(".carousel-image");
-        
+
         function showImage(index) {
-          images.forEach((image, i) => {
-            image.classList.toggle("active", i === index);
-          });
+            images.forEach((image, i) => {
+                image.classList.toggle("active", i === index);
+            });
         }
-        
+
         function prevImage() {
-          currentIndex = (currentIndex - 1 + images.length) % images.length;
-          showImage(currentIndex);
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
         }
-        
+
         function nextImage() {
-          currentIndex = (currentIndex + 1) % images.length;
-          showImage(currentIndex);
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
         }
-      
+
 
 
         // ---
 
         let currentIndex2 = 0;
         const images2 = document.querySelectorAll(".carousel-image2");
-        
+
         function showImage2(index) {
-          images2.forEach((image, i) => {
-            image.classList.toggle("active2", i === index);
-          });
+            images2.forEach((image, i) => {
+                image.classList.toggle("active2", i === index);
+            });
         }
-        
+
         function prevImage2() {
-          currentIndex2 = (currentIndex2 - 1 + images2.length) % images2.length;
-          showImage2(currentIndex2);
+            currentIndex2 = (currentIndex2 - 1 + images2.length) % images2.length;
+            showImage2(currentIndex2);
         }
-        
+
         function nextImage2() {
-          currentIndex2 = (currentIndex2 + 1) % images2.length;
-          showImage2(currentIndex2);
+            currentIndex2 = (currentIndex2 + 1) % images2.length;
+            showImage2(currentIndex2);
         }
 
 
-      </script>
+    </script>
 </body>
 
 </html>
