@@ -455,6 +455,11 @@ font-family: pri;
     background: #333;
 }
 
+#btInsta{
+    background: linear-gradient(45deg, #8766d6, #f186d3, #ffa187, #ffc337, #ff7d51);
+
+}
+
 .information2 {
     width: 100%;
     margin-bottom: 100px;
