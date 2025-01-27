@@ -65,16 +65,27 @@ a {
     src: url('fonts/Pricedown\ Bl.otf');
 }
 .dvVideo{
-    width: 100%;
-    height: 250px;
+    
     /* background-color: #11cd3d; */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 250px;
+    overflow: hidden;
+    
+    
+   
+}
+
+.myContVi{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-   
+    gap: 10px; 
+
 }
+
+/**/
 
 .dvVideo video{
   position: absolute;
@@ -489,12 +500,12 @@ font-weight: 900;
 
 #btInsta{
     /* background: linear-gradient(45deg, #8766d6, #f186d3, #ffa187, #ffc337, #ff7d51); */
-  border:solid #ff0000 7px;
+  border:solid #ffffff 7px;
 
 }
 
 #ins{
-    fill:#ff0000;
+    fill:#ffffff;
 }
 
 .information2 {
