@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #236154;
+    --primary-color: #40a891;
     --secondary-color: #355e53;
     --accent-color: #ffffff;
     --text-color: #ffffff;
@@ -69,11 +69,11 @@ nav {
 
 #imgL{
     width: 100%;
-    object-fit: cover;
-    height: 350px;
     opacity: 0.2;
     position: absolute;
-    top:0;
+    object-fit: cover;
+    
+   top:0;
     left: 0;
     z-index: -1000;
 }
