@@ -48,5 +48,19 @@
     "aprobado": true,
     "boletos": 3,
     "precioTotal": 3
+  },
+  {
+    "nombre": "huguito",
+    "apellidos": "hernan",
+    "for": "5551",
+    "email": "hugomasteronix@gmail.com",
+    "telefono": "4779082327",
+    "correo": "hugomasteronix@gmail.com",
+    "apellido": "hernan",
+    "referencias": 5551,
+    "numero": 4779082327,
+    "aprobado": false,
+    "boletos": 2,
+    "precioTotal": 2
   }
 ]

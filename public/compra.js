@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnDecrementar = document.getElementById('decrementar');
     const labelPrecio = document.getElementById('precio');
     const labelPrecio2 = document.getElementById('precio2');
-    const success = document.getElementById('dvSuccess');
     const PRECIO_BASE = 1; // Precio base por unidad
     const PRECIO_BASE_BS = 67;
     let cantidad = parseInt(input.value);
