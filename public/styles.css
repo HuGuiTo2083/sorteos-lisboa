@@ -1,9 +1,9 @@
 :root {
-    --primary-color: #ff6060;
-    --secondary-color: #ffc2c2;
+    --primary-color: #236154;
+    --secondary-color: #355e53;
     --accent-color: #ffffff;
     --text-color: #ffffff;
-    --background-color: #702727;
+    --background-color: #25302f;
 }
 
 * {
@@ -63,7 +63,19 @@ nav {
 .hero {
     text-align: center;
     padding: 3rem 1rem;
-    background: linear-gradient(45deg, var(--secondary-color), var(--background-color));
+    /* background: linear-gradient(45deg, var(--secondary-color), var(--background-color)); */
+   overflow: hidden;
+}
+
+#imgL{
+    width: 100%;
+    object-fit: cover;
+    height: 350px;
+    opacity: 0.2;
+    position: absolute;
+    top:0;
+    left: 0;
+    z-index: -1000;
 }
 
 .glow-text {
@@ -303,7 +315,7 @@ footer {
     width: 25px;
     height: 25px;
     border-radius: 50%; /* Hace el botón circular */
-    background-color: #af4c4c; /* Color de fondo verde */
+    background-color: #4cafa2; /* Color de fondo verde */
     color: white; /* Color del texto (emoticono) */
     font-size: 30px; /* Tamaño del emoticono */
     border: none;
@@ -311,6 +323,7 @@ footer {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s;
     position: relative;
+   
    
   }
   
