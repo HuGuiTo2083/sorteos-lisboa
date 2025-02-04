@@ -394,6 +394,14 @@ font-weight: 900;
 
 }
 
+#btRedesIG{
+    cursor: pointer;
+}
+
+#btRedesW{
+    cursor: pointer;
+}
+
 .dvPremio {
     width: 100%;
     display: flex;
