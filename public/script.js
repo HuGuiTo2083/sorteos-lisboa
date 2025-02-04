@@ -61,7 +61,14 @@ document.addEventListener('DOMContentLoaded', () => {
     
          window.location.href = "https://wa.me/+584243131639"
  
-     })
+     }
+    )
+
+    const closeTerms = document.getElementById('btCloseTerms')
+    const terms = document.getElementById('terms')
+    closeTerms.addEventListener('click', ()=>{
+  terms.style.display = 'none'
+    })
 
 });
 

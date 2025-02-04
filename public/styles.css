@@ -122,7 +122,7 @@ nav {
         grid-template-rows: 100px  1fr 1fr 1fr;
         column-gap: 10px;
     }
-
+   
     #prize1{
         /* background-color: #ff6060; */
         grid-row: 2;
@@ -143,6 +143,42 @@ nav {
 .prize-content h4{
     color: rgb(38, 82, 63);
 }
+#terms h4{
+    margin-bottom: 10px;
+}
+
+
+
+#btCloseTerms{
+    width: 150px;
+    border-radius: 2rem;
+    background-color: #4b4b4b;
+    color: white;
+    cursor: pointer;
+    border: solid white 2px;
+    
+}
+
+.rowT{
+    width: 100%;
+    height: 50px;
+    /* background-color: #355e53; */
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+#terms{
+    width: 64vw;
+    height: 420px;
+    background-color: black;
+    border-radius: 1rem;
+    position: absolute;
+    top:20vh;
+    left: 16vw;
+    z-index: 1000;
+    padding: 10px 40px;
+}
 
 .section-title {
     text-align: center;
@@ -151,7 +187,7 @@ nav {
 }
 
 .prize-card {
-    background: #53d3a098;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
     border-radius: 15px;
     padding: 1.5rem;
     margin-bottom: 2rem;
@@ -159,6 +195,10 @@ nav {
     transform: translateY(0);
     transition: transform 0.3s ease;
     
+}
+
+#terms li{
+    font-size: 13px;
 }
 
 .child{
