@@ -118,5 +118,19 @@
     "aprobado": false,
     "boletos": 1,
     "precioTotal": 1
+  },
+  {
+    "nombre": "Hugo Ubaldo",
+    "apellidos": "Hernández Murillo",
+    "for": "1030",
+    "email": "hugoubaldoh@icloud.com",
+    "telefono": "545434",
+    "correo": "hugoubaldoh@icloud.com",
+    "apellido": "Hernández Murillo",
+    "referencias": 1030,
+    "numero": 545434,
+    "aprobado": false,
+    "boletos": 2,
+    "precioTotal": 2
   }
 ]
