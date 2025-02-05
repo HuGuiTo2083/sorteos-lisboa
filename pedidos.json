@@ -62,5 +62,33 @@
     "aprobado": false,
     "boletos": 2,
     "precioTotal": 2
+  },
+  {
+    "nombre": "HuGuiTo2083",
+    "apellidos": "Hernández ",
+    "for": "9999",
+    "email": "hugoubaldoh@icloud.com",
+    "telefono": "4779082327",
+    "correo": "hugoubaldoh@icloud.com",
+    "apellido": "Hernández ",
+    "referencias": 9999,
+    "numero": 4779082327,
+    "aprobado": false,
+    "boletos": 2,
+    "precioTotal": 2
+  },
+  {
+    "nombre": "HuGuiTo",
+    "apellidos": "Hernandez",
+    "for": "9990",
+    "email": "21240723@leon.tecnm.mx",
+    "telefono": "4779082327",
+    "correo": "21240723@leon.tecnm.mx",
+    "apellido": "Hernandez",
+    "referencias": 9990,
+    "numero": 4779082327,
+    "aprobado": true,
+    "boletos": 2,
+    "precioTotal": 2
   }
 ]

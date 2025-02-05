@@ -54,5 +54,19 @@
     "propietario": "Hugo Hola",
     "correo": "hhugoubaldoh@gmail.com",
     "fechaCompra": "2025-01-27T00:45:00.939Z"
+  },
+  {
+    "numero": 1569,
+    "referencia": 9990,
+    "propietario": "HuGuiTo Hernandez",
+    "correo": "21240723@leon.tecnm.mx",
+    "fechaCompra": "2025-02-05T05:57:12.211Z"
+  },
+  {
+    "numero": 5954,
+    "referencia": 9990,
+    "propietario": "HuGuiTo Hernandez",
+    "correo": "21240723@leon.tecnm.mx",
+    "fechaCompra": "2025-02-05T05:57:12.211Z"
   }
 ]
