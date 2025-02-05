@@ -1,1 +1,26 @@
+name: Deploy to VPS
 
+on:
+  push:
+    branches:
+      - master  # Se ejecutará cuando hagas push a la rama 'main'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Deploy to VPS
+      uses: appleboy/ssh-action@v0.1.5
+      with:
+        host: 31.220.109.166  # Reemplaza con la IP de tu servidor
+        username: root        # Usuario de tu servidor
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          cd /ruta/a/tu/proyecto
+          git pull origin main
+          npm install
+          pm2 restart server.js
