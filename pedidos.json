@@ -143,7 +143,7 @@
     "apellido": "Hernández Murillo",
     "referencias": 6461,
     "numero": 75454,
-    "aprobado": false,
+    "aprobado": true,
     "boletos": 2,
     "precioTotal": 2
   }
