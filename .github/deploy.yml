@@ -3,24 +3,26 @@ name: Deploy to VPS
 on:
   push:
     branches:
-      - master  # Se ejecutará cuando hagas push a la rama 'main'
+      - master # Cambia a 'main' si tu rama principal es 'main'
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      # Clona el código del repositorio
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Deploy to VPS
-      uses: appleboy/ssh-action@v0.1.5
-      with:
-        host: 31.220.109.166  # Reemplaza con la IP de tu servidor
-        username: root        # Usuario de tu servidor
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        script: |
-          cd /ruta/a/tu/proyecto
-          git pull origin main
-          npm install
-          pm2 restart server.js
+      # Conéctate al VPS y ejecuta los comandos de despliegue
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+          host: 31.220.109.166 # IP de tu servidor VPS
+          username: root # Usuario del VPS
+          key: ${{ secrets.SSH_PRIVATE_KEY }} # Clave privada configurada en los Secrets
+          script: |
+            cd /root/sorteos-lisboa # Asegúrate de que esta ruta sea válida
+            git pull origin main # Actualiza el repositorio
+            npm install # Instala dependencias
+            pm2 restart server.js # Reinicia la aplicación con PM2
