@@ -40,12 +40,38 @@ header {
     z-index: 100;
 }
 
+.line2{
+    width: 100%;
+    height: 100%;
+}
+
+.line2:nth-child(1){
+    background-color: #eebdbd;
+}
+
+.line2:nth-child(4){
+    background-color: #ff5e5e;
+}
+
+.line2:nth-child(2){
+    background-color: #b1bc21;
+}
+
+.line2:nth-child(2) p{
+    font-size: 12px;
+}
+
+
+.line2:nth-child(3){
+    background-color: #06b12b;
+}
+
 .dvYape{
     /* background-color: #eb493e; */
     width: 100%;
     height: 100px;
     display: grid;
-    grid-template-columns:  1fr 2fr 0.5fr 1fr;
+    grid-template-columns:  1fr 3fr 0.5fr 1fr;
 }
 
 nav {
