@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cantidad = parseInt(input.value);
         const precioTotal = cantidad * PRECIO_BASE;
         const precioTotal2 = cantidad * PRECIO_BASE_BS;
-        labelPrecio2.textContent = `${precioTotal2} Bs`;
+        labelPrecio2.textContent = `${precioTotal2}.00 Bs`;
 
         labelPrecio.textContent = `${precioTotal} USD`;
     }
