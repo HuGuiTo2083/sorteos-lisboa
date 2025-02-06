@@ -20,7 +20,7 @@ jobs:
         username: root        # Usuario de tu servidor
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-          cd /ruta/a/tu/proyecto
+          cd /root/sorteos-lisboa
           git pull origin main
           npm install
           pm2 restart server.js
