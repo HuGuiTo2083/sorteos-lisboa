@@ -206,6 +206,14 @@ nav {
     animation: glow 2s ease-in-out infinite;
 }
 
+.gt{
+  color: rgb(214, 213, 213);
+    font-weight: 900;
+    
+    text-shadow: 0 0 10px white;
+    animation: glow2 2s ease-in-out infinite;
+}
+
 .prize-amount {
     font-size: 3rem;
     font-weight: 800;
@@ -253,7 +261,7 @@ nav {
 }
 
 .prize-content h4{
-    color: rgb(38, 82, 63);
+    /* color: rgb(38, 82, 63); */
 }
 #terms h4{
     margin-bottom: 10px;
@@ -333,7 +341,7 @@ nav {
 }
 
 .prize-card h3 {
-    color: rgb(38, 82, 63);
+    /* color: rgb(38, 82, 63); */
     margin-bottom: 1rem;
 }
 
@@ -479,6 +487,15 @@ footer {
     }
     50% {
         text-shadow: 0 0 20px var(--accent-color), 0 0 30px var(--accent-color);
+    }
+}
+
+@keyframes glow2 {
+    0%, 100% {
+        text-shadow: 0 0 10px white;
+    }
+    50% {
+        text-shadow: 0 0 20px white, 0 0 30px white;
     }
 }
 
