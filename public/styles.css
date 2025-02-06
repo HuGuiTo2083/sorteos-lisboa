@@ -191,7 +191,7 @@ nav {
     opacity: 0.2;
     position: absolute;
     object-fit: cover;
-    height: 200px;
+    height: 320px;
    top:0;
     left: 0;
     z-index: -1000;
