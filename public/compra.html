@@ -68,8 +68,8 @@
             color: var(--accent-color);
         }
     </style>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&display=swap');
 
         .grid-container {
             display: grid;
@@ -77,45 +77,105 @@
             grid-template-rows: 1fr;
             place-items: center;
             min-height: 250px;
-            background: #1a1a1a;
+            background: linear-gradient(135deg, #2c2000 0%, #483500 100%);
             font-family: 'Poppins', sans-serif;
+            padding: 20px;
         }
 
         .ticket-text {
             text-align: center;
-            animation: shine 2s infinite linear;
-            background: linear-gradient(
-                90deg,
-                #c0c0c0 0%,
-                #e8e8e8 20%,
-                #c0c0c0 40%,
-                #919191 60%,
-                #c0c0c0 80%,
-                #ffffff 100%
-            );
-            background-size: 200% auto;
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            text-shadow: 0px 0px 10px rgba(192, 192, 192, 0.3);
+            position: relative;
         }
 
         .title {
+            display: block;
             font-size: 1.5rem;
-            font-weight: 300;
-            margin-bottom: 0.5rem;
-            
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #ffd700;
+            text-shadow: 
+                0 0 2px #ffd700,
+                0 0 4px rgba(255, 215, 0, 0.5);
         }
 
         .numbers {
+            display: block;
             font-size: 2.5rem;
-            font-weight: 600;
-            letter-spacing: 2px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            line-height: 1.5;
         }
 
-        @keyframes shine {
-            to {
-                background-position: 200% center;
+        .number {
+            display: inline-block;
+            color: #ffd700;
+            text-shadow: 
+                0 0 2px #ffd700,
+                0 0 5px rgba(255, 215, 0, 0.7),
+                0 0 10px rgba(255, 215, 0, 0.3);
+            animation: glow 2s ease-in-out infinite;
+            background: linear-gradient(
+                90deg,
+                #ffd700 0%,
+                #fff3a0 50%,
+                #ffd700 100%
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+        }
+
+        .number::after {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            right: -10%;
+            bottom: -10%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.2) 0%, transparent 70%);
+            animation: pulse 2s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        .number:nth-child(2n) {
+            animation-delay: 0.3s;
+        }
+
+        .number:nth-child(3n) {
+            animation-delay: 0.6s;
+        }
+
+        .comma {
+            color: #ffd700;
+            opacity: 0.7;
+            margin: 0 5px;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 
+                    0 0 2px #ffd700,
+                    0 0 5px rgba(255, 215, 0, 0.7),
+                    0 0 10px rgba(255, 215, 0, 0.3);
+            }
+            50% {
+                text-shadow: 
+                    0 0 4px #ffd700,
+                    0 0 10px rgba(255, 215, 0, 0.7),
+                    0 0 15px rgba(255, 215, 0, 0.5),
+                    0 0 20px rgba(255, 215, 0, 0.3);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
             }
         }
     </style>
@@ -142,15 +202,21 @@
 
     <main>
         <div class="grid-container">
-
-            <p class="ticket-text">
-                <span class="title">Tickets premiados:</span><br>
-
-                <span class="numbers">
-                    0000, 1111, 2222, 3333, 4444,<br>
-                    5555, 6666, 7777, 8888, 9999
-                </span>
-            </p>
+            <div class="ticket-text">
+                <span class="title">Tickets premiados:</span>
+                <div class="numbers">
+                    <span class="number">0000</span><span class="comma">,</span>
+                    <span class="number">1111</span><span class="comma">,</span>
+                    <span class="number">2222</span><span class="comma">,</span>
+                    <span class="number">3333</span><span class="comma">,</span>
+                    <span class="number">4444</span><br>
+                    <span class="number">5555</span><span class="comma">,</span>
+                    <span class="number">6666</span><span class="comma">,</span>
+                    <span class="number">7777</span><span class="comma">,</span>
+                    <span class="number">8888</span><span class="comma">,</span>
+                    <span class="number">9999</span>
+                </div>
+            </div>
         </div>
       <section class="prizes">
         <h2 class=" child section-title">3 AFORTUNADOS GANADORES</h2>
