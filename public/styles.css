@@ -186,6 +186,17 @@ nav {
     z-index: -1000;
 }
 
+#imgL{
+    width: 100%;
+    opacity: 0.2;
+    position: absolute;
+    object-fit: cover;
+    height: 200px;
+   top:0;
+    left: 0;
+    z-index: -1000;
+}
+
 .glow-text {
     font-size: 2.5rem;
     font-weight: 800;
