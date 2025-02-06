@@ -82,6 +82,16 @@ overflow: hidden;
 
 }
 
+.dvContaIn{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 .titleTi{
     margin-top: 10px;
     width: 100%;
