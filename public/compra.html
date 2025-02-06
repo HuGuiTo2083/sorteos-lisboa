@@ -435,5 +435,25 @@
     </footer>
     <script src="compra.js"></script>
     <script src="script.js"></script>
+    <script>
+        function copyText(text) {
+
+
+            // Copiar al portapapeles
+            navigator.clipboard.writeText(text)
+                .then(() => {
+                    // Mostrar mensaje de éxito
+
+                    console.log('f')
+                    alert('Copiado Exitosamente')
+                    // Ocultar mensaje después de 2 segundos
+
+                })
+                .catch(err => {
+                    console.error('Error al copiar:', err);
+                    alert('No se pudo copiar el texto. Por favor, inténtalo de nuevo.');
+                });
+        }
+    </script>
 </body>
 </html>
