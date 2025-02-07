@@ -14,6 +14,7 @@
     "precioTotal": 2
   },
   {
+<<<<<<< HEAD
     "nombre": "Prueba",
     "apellidos": "https",
     "for": "0028",
@@ -84,6 +85,8 @@
     "precioTotal": 2
   },
   {
+=======
+>>>>>>> 193fc99a6b964dc54a4d197405ce7528a5fec57f
     "nombre": "Jugo",
     "apellidos": "Leon",
     "for": "0027",

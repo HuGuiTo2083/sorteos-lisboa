@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         pedido.precioTotal = parseInt(document.getElementById('precio').textContent);
         
         try {
-            const response = await fetch('https://sorteoslisboaranch.com/api/pedidos', {
+            const response = await fetch('/api/pedidos', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
