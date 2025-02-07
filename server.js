@@ -9,18 +9,6 @@ import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import https from 'https';
-import fs from 'fs';
-import cors from 'cors';
-
-// Crear la instancia de la aplicación Express
-const app = express();
-
-app.use(cors({
-    origin: ['https://sorteoslisboa..com', 'http://localhost:3000'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true
-}));
-
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -30,11 +18,11 @@ dotenv.config();
 
 class GitHubSync {
     constructor(owner, repo) {
+        // Desactivar la verificación de certificados de manera más completa
+        
         this.octokit = new Octokit({ 
-            auth: process.env.GITHUB_TOKEN,
-            request: {
-                timeout: 15000
-            }
+            auth: process.env.GITHUB_TOKEN
+           
         });
         this.owner = owner;
         this.repo = repo;
@@ -181,6 +169,8 @@ const transporter = nodemailer.createTransport({
 const pedidosPath = path.join(__dirname, 'pedidos.json');
 
 
+// Crear la instancia de la aplicación Express
+const app = express();
 // Middleware para parsear JSON y servir archivos estáticos
 app.use(express.json());
 app.use(express.static('public'));
