@@ -6,9 +6,10 @@ import path from 'path';
 import nodemailer from 'nodemailer';
 import { Octokit } from '@octokit/rest';
 import dotenv from 'dotenv';
-
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import https from 'https';
+import { SSL_OP_LEGACY_SERVER_CONNECT } from 'node:constants';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -18,9 +19,38 @@ dotenv.config();
 
 class GitHubSync {
     constructor(owner, repo) {
-      this.octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
-      this.owner = owner;
-      this.repo = repo;
+        // Desactivar la verificación de certificados de manera más completa
+        process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+        
+        this.octokit = new Octokit({ 
+            auth: process.env.GITHUB_TOKEN,
+            request: {
+                agent: new https.Agent({
+                    rejectUnauthorized: false,
+                    secureOptions: SSL_OP_LEGACY_SERVER_CONNECT
+                }),
+                timeout: 15000 // Aumentar el timeout a 15 segundos
+            }
+        });
+        this.owner = owner;
+        this.repo = repo;
+    }
+
+    async testConnection() {
+        try {
+            // Intentar una operación más simple primero
+            const { data } = await this.octokit.rest.users.getAuthenticated();
+            console.log('Autenticación exitosa como:', data.login);
+            return true;
+        } catch (error) {
+            console.error('Error detallado:', {
+                mensaje: error.message,
+                status: error.status,
+                headers: error.response?.headers,
+                causa: error.cause
+            });
+            return false;
+        }
     }
   
     async updateJsonFile(path, content) {
@@ -57,6 +87,23 @@ const sync = new GitHubSync(
     'sorteos-lisboa'
   );
 
+// Función para probar la conexión
+async function probarConexion() {
+    try {
+        const resultado = await sync.testConnection();
+        if (resultado) {
+            console.log('✅ Conexión exitosa con GitHub');
+        } else {
+            console.log('❌ Error al conectar con GitHub');
+        }
+    } catch (error) {
+        console.error('Error en la prueba de conexión:', error);
+    }
+}
+
+// Llama a la función cuando inicias el servidor
+probarConexion();
+
   // Función para usar cuando modificas tu JSON
   async function actualizarJSON(archivo, nuevosDatos) {
     try {
@@ -66,7 +113,7 @@ const sync = new GitHubSync(
         await sync.updateJsonFile(archivo, nuevosDatos);
         console.log('✅ JSON actualizado exitosamente en GitHub');
     } catch (error) {
-        console.error('❌ Error detallado al actualizar en GitHub:', error.message);
+        console.error('❌ Errorr detallado al actualizar en GitHub:', error.message);
         console.error('Stack:', error.stack);
     }
 }
