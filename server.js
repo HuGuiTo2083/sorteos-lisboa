@@ -25,7 +25,7 @@ class GitHubSync {
   
     async updateJsonFile(path, content) {
       try {
-        // Primero obtener el archivo actual y su SHA
+        // Primero obtener el archivo actual y su SHAa
         const currentFile = await this.octokit.repos.getContent({
           owner: this.owner,
           repo: this.repo,
