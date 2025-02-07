@@ -14,7 +14,6 @@
     "precioTotal": 2
   },
   {
-<<<<<<< HEAD
     "nombre": "Prueba",
     "apellidos": "https",
     "for": "0028",
@@ -45,56 +44,12 @@
   {
     "nombre": "Prueba",
     "apellidos": "https",
-    "for": "0028",
+    "for": "0029",
     "email": "hugo@gmail.com",
     "telefono": "35554",
     "correo": "hugo@gmail.com",
     "apellido": "https",
-    "referencias": 28,
-    "numero": 35554,
-    "aprobado": false,
-    "boletos": 2,
-    "precioTotal": 2
-  },
-  {
-    "nombre": "Prueba",
-    "apellidos": "https",
-    "for": "0028",
-    "email": "hugo@gmail.com",
-    "telefono": "35554",
-    "correo": "hugo@gmail.com",
-    "apellido": "https",
-    "referencias": 28,
-    "numero": 35554,
-    "aprobado": false,
-    "boletos": 2,
-    "precioTotal": 2
-  },
-  {
-    "nombre": "Prueba",
-    "apellidos": "https",
-    "for": "0028",
-    "email": "hugo@gmail.com",
-    "telefono": "35554",
-    "correo": "hugo@gmail.com",
-    "apellido": "https",
-    "referencias": 28,
-    "numero": 35554,
-    "aprobado": false,
-    "boletos": 2,
-    "precioTotal": 2
-  },
-  {
-=======
->>>>>>> 193fc99a6b964dc54a4d197405ce7528a5fec57f
-    "nombre": "Jugo",
-    "apellidos": "Leon",
-    "for": "0027",
-    "email": "hugo@gmail.com",
-    "telefono": "35554",
-    "correo": "hugo@gmail.com",
-    "apellido": "Leon",
-    "referencias": 27,
+    "referencias": 29,
     "numero": 35554,
     "aprobado": false,
     "boletos": 2,
