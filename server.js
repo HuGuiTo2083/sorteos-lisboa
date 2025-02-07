@@ -180,7 +180,7 @@ async function guardarTickets(nuevosTickets) {
     const tickets = await leerTickets();
     tickets.push(...nuevosTickets);
     await fs.writeFile(ticketsPath, JSON.stringify(tickets, null, 2));
-    await actualizarJSON('tickets.json', tickets);
+    // await actualizarJSON('tickets.json', tickets);
 }
 
 
@@ -228,7 +228,7 @@ app.put('/api/pedidos/:referencia', async (req, res) => {
         if (pedidoIndex !== -1) {
             pedidos[pedidoIndex].aprobado = true;
             await fs.writeFile(pedidosPath, JSON.stringify(pedidos, null, 2));
-            await actualizarJSON('pedidos.json', pedidos);
+            // await actualizarJSON('pedidos.json', pedidos);
             // Generar números de boletos
             const pedido = pedidos[pedidoIndex];
             const numerosGenerados = await generarNumerosBoletosUnicos(pedido.boletos);

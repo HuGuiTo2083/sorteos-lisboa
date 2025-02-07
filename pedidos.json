@@ -49,10 +49,43 @@
     "telefono": "35554",
     "correo": "hugo@gmail.com",
     "apellido": "https",
+<<<<<<< HEAD
     "referencias": 29,
+=======
+    "referencias": 28,
+    "numero": 35554,
+    "aprobado": false,
+    "boletos": 2,
+    "precioTotal": 2
+  },
+  {
+    "nombre": "Prueba",
+    "apellidos": "https",
+    "for": "0028",
+    "email": "hugo@gmail.com",
+    "telefono": "35554",
+    "correo": "hugo@gmail.com",
+    "apellido": "https",
+    "referencias": 28,
+    "numero": 35554,
+    "aprobado": false,
+    "boletos": 2,
+    "precioTotal": 2
+  },
+  {
+    "nombre": "Prueba",
+    "apellidos": "https",
+    "for": "0028",
+    "email": "hugo@gmail.com",
+    "telefono": "35554",
+    "correo": "hugo@gmail.com",
+    "apellido": "https",
+    "referencias": 28,
+>>>>>>> 898280c90a4a80a3d15f34a0e8fd96751b4f91b2
     "numero": 35554,
     "aprobado": false,
     "boletos": 2,
     "precioTotal": 2
   }
+
 ]
