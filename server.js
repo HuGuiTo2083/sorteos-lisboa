@@ -20,9 +20,10 @@ app.use(express.static('public'));
 
 
 app.use(cors({
-    origin: ['https://sorteoslisboaranch.com', 'http://127.0.0.1:3000'],
+    origin: ['https://sorteoslisboaranch.com', 'http://localhost:3000', 'http://127.0.0.1:3000'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -35,7 +36,11 @@ class GitHubSync {
         // Desactivar la verificación de certificados de manera más completa
         
         this.octokit = new Octokit({ 
-            auth: process.env.GITHUB_TOKEN
+            auth: process.env.GITHUB_TOKEN,
+            baseUrl: 'https://api.github.com',
+            request: {
+                timeout: 15000
+            }
            
         });
         this.owner = owner;
@@ -276,6 +281,8 @@ app.put('/api/pedidos/:referencia', async (req, res) => {
 // Ruta para guardar pedidos
 app.post('/api/pedidos', async (req, res) => {
     console.log("2aa")
+    console.log('Headers recibidos:', req.headers);
+    console.log('Body recibido:', req.body);
     try {
         let pedidos = [];
         
