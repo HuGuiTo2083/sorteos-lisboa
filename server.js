@@ -9,14 +9,13 @@ import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import https from 'https';
-import fs from 'fs';
 import cors from 'cors';
 
 // Crear la instancia de la aplicación Express
 const app = express();
 
 app.use(cors({
-    origin: ['https://sorteoslisboa..com', 'http://localhost:3000'],
+    origin: ['https://sorteoslisboaranch.com', 'http://localhost:3000'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
