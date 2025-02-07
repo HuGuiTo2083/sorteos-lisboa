@@ -9,7 +9,13 @@ import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import https from 'https';
+import cors from 'cors';
 
+app.use(cors({
+    origin: ['https://sorteoslisboaranch.com', 'http://127.0.0.1:3000'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
+}));
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
