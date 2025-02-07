@@ -11,6 +11,14 @@ import { dirname } from 'path';
 import https from 'https';
 import cors from 'cors';
 
+
+// Crear la instancia de la aplicación Express
+const app = express();
+// Middleware para parsear JSON y servir archivos estáticos
+app.use(express.json());
+app.use(express.static('public'));
+
+
 app.use(cors({
     origin: ['https://sorteoslisboaranch.com', 'http://127.0.0.1:3000'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
@@ -175,11 +183,7 @@ const transporter = nodemailer.createTransport({
 const pedidosPath = path.join(__dirname, 'pedidos.json');
 
 
-// Crear la instancia de la aplicación Express
-const app = express();
-// Middleware para parsear JSON y servir archivos estáticos
-app.use(express.json());
-app.use(express.static('public'));
+
 
 
 
