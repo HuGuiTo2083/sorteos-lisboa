@@ -324,6 +324,10 @@ nav {
     grid-column: span 3;
 }
 
+.form-section span, h2, label{
+    color: black;
+}
+
 .prize-card:hover {
     transform: translateY(-5px);
 }
