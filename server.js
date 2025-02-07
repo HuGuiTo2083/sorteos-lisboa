@@ -9,7 +9,22 @@ import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import https from 'https';
-import { SSL_OP_LEGACY_SERVER_CONNECT } from 'node:constants';
+import fs from 'fs';
+
+if (process.env.NODE_ENV === 'production') {
+    const httpsOptions = {
+        key: fs.readFileSync('/etc/letsencrypt/live/sorteoslisboaranch.com/privkey.pem'),
+        cert: fs.readFileSync('/etc/letsencrypt/live/sorteoslisboaranch.com/fullchain.pem')
+    };
+
+    https.createServer(httpsOptions, app).listen(443, () => {
+        console.log('Servidor HTTPS corriendo en puerto 443');
+    });
+} else {
+    app.listen(3000, () => {
+        console.log('Servidor desarrollo corriendo en puerto 3000');
+    });
+}
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -19,17 +34,10 @@ dotenv.config();
 
 class GitHubSync {
     constructor(owner, repo) {
-        // Desactivar la verificación de certificados de manera más completa
-        process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
-        
         this.octokit = new Octokit({ 
             auth: process.env.GITHUB_TOKEN,
             request: {
-                agent: new https.Agent({
-                    rejectUnauthorized: false,
-                    secureOptions: SSL_OP_LEGACY_SERVER_CONNECT
-                }),
-                timeout: 15000 // Aumentar el timeout a 15 segundos
+                timeout: 15000
             }
         });
         this.owner = owner;
