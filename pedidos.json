@@ -165,9 +165,7 @@
     "nombre": "Jugo",
     "apellidos": "Leon",
     "for": "0022",
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
+
     "email": "hugoubaldoh@icloud.com",
     "telefono": "245434",
     "correo": "hugoubaldoh@icloud.com",
@@ -210,9 +208,7 @@
     "nombre": "Jugo",
     "apellidos": "Leon",
     "for": "0022",
-=======
->>>>>>> 930ec4a0f6523f080d3f8bbae34218e972aaadbd
->>>>>>> 11b1946e89bc59935c116a7da9ecb7bf4b358741
+
     "email": "hugo@gmail.com",
     "telefono": "35554",
     "correo": "hugo@gmail.com",
@@ -222,11 +218,8 @@
     "aprobado": false,
     "boletos": 2,
     "precioTotal": 2
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 11b1946e89bc59935c116a7da9ecb7bf4b358741
+
+
   },
   {
     "nombre": "Jugo",
@@ -311,9 +304,6 @@
     "aprobado": false,
     "boletos": 2,
     "precioTotal": 2
-<<<<<<< HEAD
-=======
->>>>>>> 930ec4a0f6523f080d3f8bbae34218e972aaadbd
->>>>>>> 11b1946e89bc59935c116a7da9ecb7bf4b358741
+
   }
 ]
