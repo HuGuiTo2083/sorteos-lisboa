@@ -10,21 +10,17 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import https from 'https';
 import fs from 'fs';
+import cors from 'cors';
 
-if (process.env.NODE_ENV === 'production') {
-    const httpsOptions = {
-        key: fs.readFileSync('/etc/letsencrypt/live/sorteoslisboaranch.com/privkey.pem'),
-        cert: fs.readFileSync('/etc/letsencrypt/live/sorteoslisboaranch.com/fullchain.pem')
-    };
+// Crear la instancia de la aplicación Express
+const app = express();
 
-    https.createServer(httpsOptions, app).listen(443, () => {
-        console.log('Servidor HTTPS corriendo en puerto 443');
-    });
-} else {
-    app.listen(3000, () => {
-        console.log('Servidor desarrollo corriendo en puerto 3000');
-    });
-}
+app.use(cors({
+    origin: ['https://sorteoslisboa..com', 'http://localhost:3000'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
+}));
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -185,8 +181,6 @@ const transporter = nodemailer.createTransport({
 const pedidosPath = path.join(__dirname, 'pedidos.json');
 
 
-// Crear la instancia de la aplicación Express
-const app = express();
 // Middleware para parsear JSON y servir archivos estáticos
 app.use(express.json());
 app.use(express.static('public'));
