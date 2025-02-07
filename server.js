@@ -1,3 +1,10 @@
+// Al inicio de tu archivo server.js
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
+// Si estás en desarrollo, puedes usar esta configuración
+if (process.env.NODE_ENV === 'development') {
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+}
 // server.js
 import express from 'express';
 import { promises as fs } from 'fs';
@@ -37,6 +44,10 @@ class GitHubSync {
         
         this.octokit = new Octokit({ 
             auth: process.env.GITHUB_TOKEN,
+            log: {
+                debug: (msg) => console.log('GitHub Debug:', msg),
+                error: (msg) => console.error('GitHub Error:', msg)
+            },
             baseUrl: 'https://api.github.com',
             request: {
                 timeout: 15000
