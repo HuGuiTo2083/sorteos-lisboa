@@ -256,7 +256,7 @@ app.put('/api/pedidos/:referencia', async (req, res) => {
 
             // Enviar correo de confirmación
             const mailOptions = {
-                from: 'autosalex95@gmail.com',
+                from: 'sorteolisboaranch.0@gmail.com',
                 to: pedido.correo,
                 subject: '¡Tu pedido ha sido aprobado!',
                 html: `
@@ -284,6 +284,7 @@ app.put('/api/pedidos/:referencia', async (req, res) => {
                 console.log('Correo enviado correctamente');
             } catch (emailError) {
                 console.error('Error al enviar correo:', emailError);
+                console.log('Error al enviar el error: ', emailError)
             }
 
             res.json({ 
@@ -295,6 +296,8 @@ app.put('/api/pedidos/:referencia', async (req, res) => {
         }
     } catch (error) {
         console.error('Error al actualizar pedido:', error);
+        console.log('Error al actualizar pedido:', error);
+
         res.status(500).json({ error: 'Error al actualizar el pedido' });
     }
 });
