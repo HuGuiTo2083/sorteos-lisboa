@@ -9,6 +9,51 @@
     "apellido": "Hernandez MurilloVPS",
     "referencias": 1126,
     "numero": 22626,
+<<<<<<< HEAD
+=======
+=======
+    "nombre": "Pruebasvp2",
+    "apellidos": "jejeje",
+    "for": "1234",
+    "email": "21240723@leon.tecnm.mx",
+    "telefono": "4779082337",
+    "correo": "21240723@leon.tecnm.mx",
+    "apellido": "jejeje",
+    "referencias": 1234,
+    "numero": 4779082337,
+    "aprobado": false,
+    "boletos": 2,
+    "precioTotal": 2
+  },
+  {
+    "nombre": "pruebasvp",
+    "apellidos": "SVP",
+    "for": "0067",
+    "email": "hhugoubaldo@gmail.com",
+    "telefono": "4779082337",
+    "correo": "hhugoubaldo@gmail.com",
+    "apellido": "SVP",
+    "referencias": 67,
+    "numero": 4779082337,
+    "aprobado": false,
+    "boletos": 2,
+    "precioTotal": 2
+  },
+  {
+    "nombre": "pruebasvp2",
+    "apellidos": "SVP",
+    "for": "0067",
+    "email": "hhugoubaldo@gmail.com",
+    "telefono": "4779082337",
+    "correo": "hhugoubaldo@gmail.com",
+    "apellido": "SVP",
+    "referencias": 67,
+    "numero": 4779082337,
+<<<<<<< HEAD
+=======
+>>>>>>> c737a1f4ff10a7772d4e043a4a1d91e293170619
+>>>>>>> 0b193944f50760cdb4ed3de7594a559864db94ae
+>>>>>>> faab4bd483824506c14324eba65ad35a03752cec
     "aprobado": false,
     "boletos": 2,
     "precioTotal": 2

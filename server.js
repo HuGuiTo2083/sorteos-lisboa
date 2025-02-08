@@ -1,10 +1,6 @@
-// Al inicio de tu archivo server.js
-process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+// Al inicio de tu archivo serve
 
-// Si estás en desarrollo, puedes usar esta configuración
-if (process.env.NODE_ENV === 'development') {
-    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
-}
+
 // server.js
 import express from 'express';
 import { promises as fs } from 'fs';
@@ -36,6 +32,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 dotenv.config();
+
+console.log("TOKEN:", process.env.GITHUB_TOKEN ? "EXISTE" : "NO existe");
 
 
 class GitHubSync {
@@ -76,6 +74,7 @@ class GitHubSync {
     }
   
     async updateJsonFile(path, content) {
+       
       try {
         // Primero obtener el archivo actual y su SHAa
         const currentFile = await this.octokit.repos.getContent({
@@ -129,15 +128,21 @@ probarConexion();
   // Función para usar cuando modificas tu JSON
   async function actualizarJSON(archivo, nuevosDatos) {
     try {
+        // ...updateJsonFile o testConnection...
         console.log('Intentando actualizar en GitHub:', archivo);
         console.log('Datos a actualizar:', nuevosDatos);
         
         await sync.updateJsonFile(archivo, nuevosDatos);
         console.log('✅ JSON actualizado exitosamente en GitHub');
-    } catch (error) {
-        console.error('❌ Errorr detallado al actualizar en GitHub:', error.message);
-        console.error('Stack:', error.stack);
-    }
+      } catch (error) {
+        console.error('Error al comunicar con GitHub:', {
+          mensaje: error.message,
+          status: error.status,
+          data: error.response?.data,
+          request: error.request
+        });
+      }
+  
 }
 // Ruta al archivo de tickets
 const ticketsPath = path.join(__dirname, 'tickets.json');
