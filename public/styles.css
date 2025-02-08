@@ -210,7 +210,7 @@ nav {
   color: black;
     font-weight: 900;
     
-    text-shadow: 0 0 10px black;
+    text-shadow: 0 0 10px rgb(255, 255, 255);
     animation: glow2 2s ease-in-out infinite;
 }
 
