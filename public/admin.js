@@ -7,7 +7,9 @@ async function cargarPedidos() {
     console.log("h3")
     try {
         const response = await fetch('/api/pedidos');
+        
         const pedidos = await response.json();
+
         const contenedor = document.getElementById('contenedorPedidos');
         contenedor.innerHTML = '';
 
