@@ -56,6 +56,6 @@ async function aprobarPedido(referencia) {
             console.error('Error al aprobar el pedido');
         }
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Error xd:', error);
     }
 }
