@@ -14,6 +14,7 @@
     "precioTotal": 2
   },
   {
+<<<<<<< HEAD
     "nombre": "Hugo UbaldoVPS",
     "apellidos": "Hernandez MurilloVPS",
     "for": "1126",
@@ -23,6 +24,45 @@
     "apellido": "Hernandez MurilloVPS",
     "referencias": 1126,
     "numero": 22626,
+=======
+    "nombre": "Pruebasvp2",
+    "apellidos": "jejeje",
+    "for": "1234",
+    "email": "21240723@leon.tecnm.mx",
+    "telefono": "4779082337",
+    "correo": "21240723@leon.tecnm.mx",
+    "apellido": "jejeje",
+    "referencias": 1234,
+    "numero": 4779082337,
+    "aprobado": false,
+    "boletos": 2,
+    "precioTotal": 2
+  },
+  {
+    "nombre": "pruebasvp",
+    "apellidos": "SVP",
+    "for": "0067",
+    "email": "hhugoubaldo@gmail.com",
+    "telefono": "4779082337",
+    "correo": "hhugoubaldo@gmail.com",
+    "apellido": "SVP",
+    "referencias": 67,
+    "numero": 4779082337,
+    "aprobado": false,
+    "boletos": 2,
+    "precioTotal": 2
+  },
+  {
+    "nombre": "pruebasvp2",
+    "apellidos": "SVP",
+    "for": "0067",
+    "email": "hhugoubaldo@gmail.com",
+    "telefono": "4779082337",
+    "correo": "hhugoubaldo@gmail.com",
+    "apellido": "SVP",
+    "referencias": 67,
+    "numero": 4779082337,
+>>>>>>> c737a1f4ff10a7772d4e043a4a1d91e293170619
     "aprobado": false,
     "boletos": 2,
     "precioTotal": 2
