@@ -213,6 +213,7 @@ app.get('/api/pedidos', async (req, res) => {
         res.json(JSON.parse(data));
     } catch (error) {
         console.error('Error al leer pedidos:', error);
+
         res.status(500).json({ error: 'Error al leer los pedidos' });
     }
 });
@@ -319,7 +320,7 @@ app.post('/api/pedidos', async (req, res) => {
         // Guardar el archivo actualizado
         await fs.writeFile(pedidosPath, JSON.stringify(pedidos, null, 2), 'utf8');
         console.log('Archivo guardado localmente, intentando sincronizar con GitHub...');
-        await actualizarJSON('pedidos.json', pedidos);
+         await actualizarJSON('pedidos.json', pedidos);
         console.log('Proceso completo');
         res.json({ success: true, message: 'Pedido guardado correctamente' });
     } catch (error) {
