@@ -74,32 +74,36 @@ class GitHubSync {
     }
   
     async updateJsonFile(path, content) {
-       
-      try {
-        // Primero obtener el archivo actual y su SHAa
-        const currentFile = await this.octokit.repos.getContent({
-          owner: this.owner,
-          repo: this.repo,
-          path: path,
-        });
-  
-        // Crear el commit con el nuevo contenido
-        const response = await this.octokit.repos.createOrUpdateFileContents({
-          owner: this.owner,
-          repo: this.repo,
-          path: path,
-          message: 'Actualización automática del JSON',
-          content: Buffer.from(JSON.stringify(content, null, 2)).toString('base64'),
-          sha: currentFile.data.sha,
-          branch: 'master' // o 'master' según tu rama principal
-        });
-  
-        return response.data;
-      } catch (error) {
-        console.error('Error al actualizar el archivo:', error);
-        throw error;
+        try {
+          const currentFile = await this.octokit.repos.getContent({
+            owner: this.owner,
+            repo: this.repo,
+            path: path,
+          });
+      
+          const response = await this.octokit.repos.createOrUpdateFileContents({
+            owner: this.owner,
+            repo: this.repo,
+            path: path,
+            message: 'Actualización automática del JSON',
+            content: Buffer.from(JSON.stringify(content, null, 2)).toString('base64'),
+            sha: currentFile.data.sha,
+            branch: 'master'
+          });
+          return response.data;
+      
+        } catch (error) {
+          // Añade un log MUY detallado:
+          console.error('Error al actualizar el archivo:', {
+            mensaje: error.message,
+            status: error.status,
+            data: error.response?.data,         // <-- Aquí aparece el cuerpo (HTML o JSON) de la respuesta
+            headers: error.response?.headers,
+          });
+          throw error;
+        }
       }
-    }
+      
   }
 
   // Ejemplo de uso en tu aplicación:
