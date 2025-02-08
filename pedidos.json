@@ -44,23 +44,6 @@
   {
     "nombre": "Prueba",
     "apellidos": "https",
-    "for": "0029",
-    "email": "hugo@gmail.com",
-    "telefono": "35554",
-    "correo": "hugo@gmail.com",
-    "apellido": "https",
-<<<<<<< HEAD
-    "referencias": 29,
-=======
-    "referencias": 28,
-    "numero": 35554,
-    "aprobado": false,
-    "boletos": 2,
-    "precioTotal": 2
-  },
-  {
-    "nombre": "Prueba",
-    "apellidos": "https",
     "for": "0028",
     "email": "hugo@gmail.com",
     "telefono": "35554",
@@ -81,11 +64,37 @@
     "correo": "hugo@gmail.com",
     "apellido": "https",
     "referencias": 28,
->>>>>>> 898280c90a4a80a3d15f34a0e8fd96751b4f91b2
     "numero": 35554,
+    "aprobado": false,
+    "boletos": 2,
+    "precioTotal": 2
+  },
+  {
+    "nombre": "Hugo Ubaldo",
+    "apellidos": "Hernandez Murillo",
+    "for": "1126",
+    "email": "21240723@leon.tecnm.mx",
+    "telefono": "22626",
+    "correo": "21240723@leon.tecnm.mx",
+    "apellido": "Hernandez Murillo",
+    "referencias": 1126,
+    "numero": 22626,
+    "aprobado": false,
+    "boletos": 2,
+    "precioTotal": 2
+  },
+  {
+    "nombre": "Hugo UbaldoVPS",
+    "apellidos": "Hernandez MurilloVPS",
+    "for": "1126",
+    "email": "21240723@leon.tecnm.mx",
+    "telefono": "22626",
+    "correo": "21240723@leon.tecnm.mx",
+    "apellido": "Hernandez MurilloVPS",
+    "referencias": 1126,
+    "numero": 22626,
     "aprobado": false,
     "boletos": 2,
     "precioTotal": 2
   }
-
 ]
