@@ -12,5 +12,19 @@
     "aprobado": false,
     "boletos": 2,
     "precioTotal": 2
+  },
+  {
+    "nombre": "Hugo UbaldoVPS",
+    "apellidos": "Hernandez MurilloVPS",
+    "for": "1126",
+    "email": "21240723@leon.tecnm.mx",
+    "telefono": "22626",
+    "correo": "21240723@leon.tecnm.mx",
+    "apellido": "Hernandez MurilloVPS",
+    "referencias": 1126,
+    "numero": 22626,
+    "aprobado": false,
+    "boletos": 2,
+    "precioTotal": 2
   }
 ]
