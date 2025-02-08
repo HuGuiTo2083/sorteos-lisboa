@@ -48,11 +48,14 @@ async function aprobarPedido(referencia) {
                 'Content-Type': 'application/json'
             }
         });
+
+        console.log('respons.text: ' ,response.text())
         
         if (response.ok) {
             // Recargar los pedidos para mostrar los cambios
             cargarPedidos();
         } else {
+            console.log('respons: ', response)
             console.error('Error al aprobar el pedido');
         }
     } catch (error) {
