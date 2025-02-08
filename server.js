@@ -330,7 +330,7 @@ app.post('/api/pedidos', async (req, res) => {
         // Guardar el archivo actualizado
         await fs.writeFile(pedidosPath, JSON.stringify(pedidos, null, 2), 'utf8');
         console.log('Archivo guardado localmente, intentando sincronizar con GitHub...');
-         await actualizarJSON('pedidos.json', pedidos);
+        // await actualizarJSON('pedidos.json', pedidos);
         console.log('Proceso completo');
         res.json({ success: true, message: 'Pedido guardado correctamente' });
     } catch (error) {
