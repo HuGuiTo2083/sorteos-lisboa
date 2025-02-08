@@ -492,10 +492,10 @@ footer {
 
 @keyframes glow2 {
     0%, 100% {
-        text-shadow: 0 0 10px black;
+        text-shadow: 0 0 10px white;
     }
     50% {
-        text-shadow: 0 0 20px black, 0 0 30px black;
+        text-shadow: 0 0 20px white, 0 0 30px white;
     }
 }
 
