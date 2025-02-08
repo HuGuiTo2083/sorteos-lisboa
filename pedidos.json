@@ -40,5 +40,19 @@
     "aprobado": false,
     "boletos": 2,
     "precioTotal": 2
+  },
+  {
+    "nombre": "pruebasvp2",
+    "apellidos": "SVP",
+    "for": "0067",
+    "email": "hhugoubaldo@gmail.com",
+    "telefono": "4779082337",
+    "correo": "hhugoubaldo@gmail.com",
+    "apellido": "SVP",
+    "referencias": 67,
+    "numero": 4779082337,
+    "aprobado": false,
+    "boletos": 2,
+    "precioTotal": 2
   }
 ]
