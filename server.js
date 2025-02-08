@@ -310,6 +310,7 @@ app.post('/api/pedidos', async (req, res) => {
         // Verificar si el archivo existe
         if (fsSync.existsSync(pedidosPath)) {
             const contenido = await fs.readFile(pedidosPath, 'utf8');
+            console.log(contenido)
             try {
                 pedidos = JSON.parse(contenido);
             } catch (parseError) {

@@ -92,6 +92,10 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     
             const data = await response.json();
+            const text = await response.text();
+
+            console.log('Respuesta en texto:', text); // <-- para ver si es HTML o JSON
+
             if (data.success) {
                 alert('Pedido realizado correctamente');
                 e.target.reset();
