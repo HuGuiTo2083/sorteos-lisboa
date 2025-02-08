@@ -207,10 +207,10 @@ nav {
 }
 
 .gt{
-  color: rgb(214, 213, 213);
+  color: black;
     font-weight: 900;
     
-    text-shadow: 0 0 10px white;
+    text-shadow: 0 0 10px black;
     animation: glow2 2s ease-in-out infinite;
 }
 
@@ -492,10 +492,10 @@ footer {
 
 @keyframes glow2 {
     0%, 100% {
-        text-shadow: 0 0 10px white;
+        text-shadow: 0 0 10px black;
     }
     50% {
-        text-shadow: 0 0 20px white, 0 0 30px white;
+        text-shadow: 0 0 20px black, 0 0 30px black;
     }
 }
 
