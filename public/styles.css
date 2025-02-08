@@ -206,13 +206,7 @@ nav {
     animation: glow 2s ease-in-out infinite;
 }
 
-.gt{
-  color: black;
-    font-weight: 900;
-    
-    text-shadow: 0 0 10px rgb(255, 255, 255);
-    animation: glow2 2s ease-in-out infinite;
-}
+
 
 .prize-amount {
     font-size: 3rem;
@@ -490,14 +484,34 @@ footer {
     }
 }
 
-@keyframes glow2 {
+.gt {
+    color: black;
+    font-weight: 900;
+    text-shadow: 0 0 4px rgba(255, 255, 255, 1),
+                 0 0 8px rgba(255, 255, 255, 1),
+                 0 0 15px rgba(255, 255, 255, 0.9),
+                 0 0 25px rgba(255, 255, 255, 0.8),
+                 0 0 35px rgba(255, 255, 255, 0.7);
+    animation: glow2 1.5s ease-in-out infinite;
+  }
+
+  @keyframes glow2 {
     0%, 100% {
-        text-shadow: 0 0 10px white;
+      text-shadow: 0 0 4px rgba(255, 255, 255, 1),
+                   0 0 8px rgba(255, 255, 255, 1),
+                   0 0 15px rgba(255, 255, 255, 0.9),
+                   0 0 25px rgba(255, 255, 255, 0.8);
     }
     50% {
-        text-shadow: 0 0 20px white, 0 0 30px white;
+      text-shadow: 0 0 4px rgba(255, 255, 255, 1),
+                   0 0 8px rgba(255, 255, 255, 1),
+                   0 0 15px rgba(255, 255, 255, 1),
+                   0 0 25px rgba(255, 255, 255, 0.9),
+                   0 0 35px rgba(255, 255, 255, 0.8),
+                   0 0 45px rgba(255, 255, 255, 0.7),
+                   0 0 60px rgba(255, 255, 255, 0.6);
     }
-}
+  }
 
 @keyframes buttonGlow {
     0%, 100% {
