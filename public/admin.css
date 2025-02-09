@@ -32,6 +32,7 @@ z-index: -1000;
     justify-content: center;
     padding: 25px;
     margin-bottom: 30px;
+    padding-top: 20px;
 }
 
 .hero-items{
@@ -89,10 +90,10 @@ z-index: -1000;
     /* background-color: #58ff3f; */
     display: flex;
 align-items: center;
+justify-content: center;
     position: relative;
     flex-direction: column;
     height: auto;
-    padding: 10px;
 }
 
 .dvFiltro{
@@ -107,6 +108,7 @@ align-items: center;
     border-radius: 5px;
     display: flex;
     gap: 15px;
+    margin-bottom: 20px;
 }
 
 #contenedorConsultas{
@@ -116,16 +118,79 @@ align-items: center;
     display: flex;
     flex-direction: column;
     row-gap: 20px;
+    height: auto;
+    align-items: center;
+    justify-content: center;
 }
 
 .divConsu{
-    width: 100%;
-    height: 100px;
+    width: 90%;
+    position: relative;
     background-color: #b2fdf3;
     border-radius: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 150px;
+   column-gap: 5px;
+    overflow: hidden;
+    
 }
 
-button{
+.subDiv{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+  font-weight: 900;
+  
+}
+
+.subDiv:nth-child(1){
+    font-family: 'Monserrat';
+    font-size: 10px;
+    color: white;
+    background-color: #35726a;
+
+}
+
+.btContact{
+    border:none;
+    cursor: pointer;
+    background-color: #59ff3f47;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    fill:white;
+}
+
+
+
+.subDiv:nth-child(2){
+    background-color: #63b6ab;
+    
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 12px;
+    color: black;
+
+}
+
+.item-consu{
+  /* background-color: #35726a; */
+  width: 100%;
+  height:100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 3fr;
+  row-gap: 10px;
+  
+
+}
+
+.button:not(.btContact){
     background-color: rgb(184, 255, 238);
     border-radius: 1rem;
     height: 60px;

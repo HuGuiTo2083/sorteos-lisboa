@@ -58,12 +58,12 @@ const transporter = nodemailer.createTransport({
  */
 async function generarNumerosBoletosUnicos(cantidad) {
   try {
-    // 1. Obtenemos todos los tickets ya registrados para no duplicar
+    // 1. Obtenemos los tickets ya registrados (ahora se guardan como strings)
     const ticketsExistentes = await sql`
       SELECT TICKETS_NUMERO FROM TICKETS_MSTR
     `;
 
-    // 2. Convertimos los resultados en un Set
+    // 2. Creamos un Set con esos valores (serán strings si en la BD ya están con ceros)
     const numerosExistentes = new Set(
       ticketsExistentes.map(t => t.tickets_numero)
     );
@@ -72,12 +72,17 @@ async function generarNumerosBoletosUnicos(cantidad) {
     const numerosGenerados = new Set();
 
     while (numerosGenerados.size < cantidad) {
-      const numeroAleatorio = Math.floor(Math.random() * 10000) + 1;
+      // Genera un número entero entre 0 y 9999
+      const numeroAleatorio = Math.floor(Math.random() * 10000);
+      // Convierte a string con 4 dígitos, rellenando con ceros a la izquierda
+      const boletoString = String(numeroAleatorio).padStart(4, '0');
+
+      // Verificamos que no exista ni en la BD ni en lo ya generado en esta tanda
       if (
-        !numerosExistentes.has(numeroAleatorio) &&
-        !numerosGenerados.has(numeroAleatorio)
+        !numerosExistentes.has(boletoString) &&
+        !numerosGenerados.has(boletoString)
       ) {
-        numerosGenerados.add(numeroAleatorio);
+        numerosGenerados.add(boletoString);
       }
     }
 
@@ -102,7 +107,9 @@ app.get('/api/pedidos', async (req, res) => {
       SELECT * FROM PEDIDO_MSTR
     `;
     // Retornamos al frontend como JSON
+    
     return res.json(pedidos);
+    
   } catch (error) {
     console.error('Error inesperado al obtener pedidos:', error);
     return res.status(500).json({ error: 'Error interno al obtener pedidos' });
@@ -112,9 +119,13 @@ app.get('/api/pedidos', async (req, res) => {
 /**
  * Aprobar un pedido y asignar boletos: PUT /api/pedidos/:referencia
  */
-app.put('/api/pedidos/:referencia', async (req, res) => {
+app.put('/api/pedidos/:referencia/:correo/:cantidad', async (req, res) => {
   try {
     const referencia = req.params.referencia
+
+    const correo = req.params.correo
+    const cantidad = req.params.cantidad
+
     // 1. Verificamos si existe un pedido con esa referencia
     const [pedidoEncontrado] = await sql`
       SELECT *
@@ -162,6 +173,27 @@ app.put('/api/pedidos/:referencia', async (req, res) => {
       'tickets_fecha_compra'
     )}
     `;
+
+    const [BuscarUsuario] = await sql`
+    SELECT * FROM USER_MSTR WHERE USER_CORREO= ${correo}
+    
+  `;
+
+    if (BuscarUsuario) {
+      const [ActualizarNúmeroPedidos] = await sql`
+      UPDATE USER_MSTR SET USER_CANTIDAD_BOLETOS = USER_CANTIDAD_BOLETOS + ${cantidad} WHERE USER_CORREO= ${correo}
+      RETURNING *
+    `;
+    }
+    else {
+      const [InsertarNúmeroPedidos] = await sql`
+      INSERT INTO USER_MSTR (USER_CORREO, USER_CANTIDAD_BOLETOS)
+      VALUES( ${correo}, ${cantidad})
+      RETURNING *
+    `;
+    }
+
+
 
     // 5. Enviamos correo de confirmación
     const mailOptions = {
@@ -281,7 +313,8 @@ app.post('/api/pedidos', async (req, res) => {
         PEDIDO_BOLETOS,
         PEDIDO_PRECIO_TOTAL,
         PEDIDO_REFERENCIAS,
-        PEDIDO_NUMERO
+        PEDIDO_NUMERO,
+        PEDIDO_METODO
       ) VALUES (
         ${pedido.nombre},
         ${pedido.apellido},
@@ -289,29 +322,13 @@ app.post('/api/pedidos', async (req, res) => {
         ${pedido.boletos},
         ${pedido.precioTotal},
         ${pedido.referencias},
-        ${pedido.numero}
+        ${pedido.numero},
+        ${pedido.metodoPago}
       )
       RETURNING *
     `;
 
-    const [BuscarUsuario] = await sql`
-      SELECT * FROM USER_MSTR WHERE USER_CORREO= ${pedido.correo}
-      
-    `;
 
-    if (BuscarUsuario) {
-      const [ActualizarNúmeroPedidos] = await sql`
-        UPDATE USER_MSTR SET USER_CANTIDAD_BOLETOS = USER_CANTIDAD_BOLETOS + ${pedido.boletos} WHERE USER_CORREO= ${pedido.correo}
-        RETURNING *
-      `;
-    }
-    else {
-      const [InsertarNúmeroPedidos] = await sql`
-        INSERT INTO USER_MSTR (USER_CORREO, USER_CANTIDAD_BOLETOS)
-        VALUES( ${pedido.correo}, ${pedido.boletos})
-        RETURNING *
-      `;
-    }
 
 
     console.log(` ${pedido.nombre},
@@ -339,54 +356,105 @@ app.post('/api/pedidos', async (req, res) => {
 
 
 app.get('/api/consulta', async (req, res) => {
-  const { correo, tick, ref } = req.query;
-  // const referencia = req.params.referencia
-  // const correo = req.params.correo
-  // const ticket = req.params.ticket
-  // 3. Borramos el registro de la user master
-  try{
-     
-  const [TotalTickets] = await sql`
-  SELECT USER_CANTIDAD_BOLETOS
-  FROM USER_MSTR
-  WHERE USER_CORREO= ${correo}
-`;
+  const { correo, ref, tick } = req.query;  // <--- CORRECTO
 
 
-const [ArrayNumeros] = await sql`
-  SELECT TICKETS_NUMERO
-  FROM TICKETS_MSTR
-  WHERE TICKETS_CORREO= ${correo}
-`;
+  console.log('correo: ', correo)
+  try {
+    const clientData = await sql`
+      SELECT DISTINCT ON (p.PEDIDO_CORREO)
+        p.PEDIDO_CORREO,
+        p.PEDIDO_NOMBRE,
+        p.PEDIDO_APELLIDO,
+        p.PEDIDO_NUMERO,
+        u.USER_CANTIDAD_BOLETOS
+        FROM PEDIDO_MSTR p
+        JOIN USER_MSTR u ON p.PEDIDO_CORREO = u.USER_CORREO
+        WHERE
+          1=1
+          ${
+            // Solo agregamos el AND si hay correo
+            correo && correo.trim() !== ''
+              ? sql`AND p.PEDIDO_CORREO LIKE ${'%' + correo + '%'}`
+              : sql``
+          }
+          
+          AND p.PEDIDO_APROBADO = true
+        ORDER BY 
+          p.PEDIDO_CORREO,             -- la columna del DISTINCT ON
+          u.USER_CANTIDAD_BOLETOS DESC 
+    `;
 
-const [ClientData] = await sql`
-  SELECT PEDIDO_NOMBRE, PEDIDO_APELLIDO, PEDIDO_NUMERO,  PEDIDO_CORREO
-  FROM PEDIDO_MSTR
-  WHERE PEDIDO_CORREO= ${correo}
-  FETCH FIRST 1 ROWS ONLY
-`;
-
-return res.json({
- 
-  total: TotalTickets,
-  tickets: ArrayNumeros,
-  client: ClientData
-  
-});
-
-
-  }
-  catch(error){
-    console.error('Error al guardar el pedido:', error);
+    return res.json({
+      clients: clientData // array con las filas, ordenadas por la cantidad de boletos
+    });
+  } catch (error) {
+    console.error('Error al consultar:', error);
     return res.status(500).json({
       success: false,
       message: 'Error al consultar',
       error: error.message
     });
   }
+});
+
+
+app.get('/api/array', async (req, res) => {
+  const { correo } = req.query;
+  try {
 
 
 
+    const arrayNumeros = await sql`
+      SELECT TICKETS_NUMERO
+      FROM TICKETS_MSTR
+      WHERE TICKETS_CORREO = ${correo}
+    `;
+
+    // 4) Retornamos todo al front
+    return res.json({
+
+      tickets: arrayNumeros,    // un array con las filas de TICKETS_MSTR
+
+    });
+  } catch (error) {
+    console.error('Error al consultar:', error);
+    return res.status(500).json({
+      success: false,
+      message: 'Error al consultar',
+      error: error.message
+    });
+  }
+});
+
+app.get('/api/totaltickets', async (req, res) => {
+  const { correo } = req.query;
+  console.log('correo proporcionado: ', correo)
+  try {
+
+    // 3) Otras consultas (si solo devuelven una fila, ahí sí puedes desestructurar).
+    const totalTickets = await sql`
+      SELECT USER_CANTIDAD_BOLETOS
+      FROM USER_MSTR
+      WHERE USER_CORREO = ${correo}
+    `;
+
+
+
+    // 4) Retornamos todo al front
+    return res.json({
+
+      total: totalTickets,    // un array con las filas de TICKETS_MSTR
+
+    });
+  } catch (error) {
+    console.error('Error al consultar:', error);
+    return res.status(500).json({
+      success: false,
+      message: 'Error al consultar',
+      error: error.message
+    });
+  }
 });
 
 // =============================

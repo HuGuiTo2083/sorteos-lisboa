@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    
+    // console.log(document.getElementById('selectM').value)
+
 
 
 
@@ -77,10 +78,11 @@ document.addEventListener('DOMContentLoaded', () => {
         pedido.nombre = document.getElementById('inName').value;
         pedido.apellido = document.getElementById('inLastName').value;
         pedido.referencias = document.getElementById('inFor').value;
-        pedido.numero = parseInt(document.getElementById('inNumber').value);
+        pedido.numero = document.getElementById('inNumber').value;
         pedido.aprobado = false
         pedido.boletos = parseInt(cantidad);
         pedido.precioTotal = parseInt(document.getElementById('precio').textContent);
+        pedido.metodoPago = document.getElementById('selectM').value
         
         try {
             const response = await fetch('/api/pedidos', {
