@@ -1,3 +1,11 @@
+:root {
+    --primary-color: #40a891;
+    --secondary-color: #355e53;
+    --accent-color: #ffffff;
+    --text-color: #ffffff;
+    --background-color: #25302f;
+}
+
 body {
     background-color: #25302f;
     
@@ -95,6 +103,39 @@ justify-content: center;
     flex-direction: column;
     height: auto;
 }
+
+#contenedorGanador{
+    width: 100%;
+    /* background-color: #58ff3f; */
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    grid-template-columns: repeat(auto-fit, 120px);
+    height: auto;
+    gap: 13px;
+}
+
+.boleto {
+    border:none;
+    border-radius: 3px;;
+    width: 100px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black; /* para visualizar el borde */
+    font-weight: bold;
+  }
+  .boleto.aprobadoo {
+    cursor: pointer;
+    background-color: rgb(184, 255, 238);
+    color: rgb(50, 108, 89);
+  }
+  .boleto.disponible {
+    background-color: white;
+    color: black;
+  }
 
 .dvFiltro{
     width: 98%;
@@ -280,3 +321,46 @@ input::placeholder{
     margin-top: 20px;
     margin-left: 60px;
 }
+
+/* El modal ocupa toda la pantalla y, por defecto, no se ve (display: none) */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 999; 
+    left: 0; 
+    top: 0;
+    width: 100%;
+    height: 100%;
+    color:#213e39;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    /* Fondo semi-transparente para oscurecer el resto */
+
+  }
+  
+  /* Contenido centrado */
+  .modal-content {
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    margin: 10% auto;
+    width: 300px; 
+    padding: 20px;
+    border-radius: 8px;
+    position: relative;
+  }
+
+  .btnCancelar:disabled{
+    cursor: not-allowed;
+    opacity: 0.6;      /* ligeramente grisado */
+    pointer-events: none; /* evita que sea clickeable */
+  }
+  
+  /* Botón de cerrar en la esquina */
+  .close {
+    position: absolute;
+    right: 16px;
+    top: 8px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  

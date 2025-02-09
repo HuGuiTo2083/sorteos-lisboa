@@ -397,6 +397,35 @@ app.get('/api/consulta', async (req, res) => {
   }
 });
 
+app.get('/api/correo', async (req, res) => {
+  const { numero} = req.query;
+  try {
+
+
+
+    const arrayNumeros = await sql`
+      SELECT TICKETS_CORREO
+      FROM TICKETS_MSTR
+      WHERE TICKETS_NUMERO = ${numero}
+     
+    `;
+
+    // 4) Retornamos todo al front
+    return res.json({
+
+      tickets: arrayNumeros,    // un array con las filas de TICKETS_MSTR
+
+    });
+  } catch (error) {
+    console.error('Error al consultar:', error);
+    return res.status(500).json({
+      success: false,
+      message: 'Error al consultar',
+      error: error.message
+    });
+  }
+});
+
 
 app.get('/api/array', async (req, res) => {
   const { correo} = req.query;
@@ -417,6 +446,31 @@ app.get('/api/array', async (req, res) => {
       tickets: arrayNumeros,    // un array con las filas de TICKETS_MSTR
 
     });
+  } catch (error) {
+    console.error('Error al consultar:', error);
+    return res.status(500).json({
+      success: false,
+      message: 'Error al consultar',
+      error: error.message
+    });
+  }
+});
+
+app.get('/api/tickets', async (req, res) => {
+  
+  try {
+
+
+
+    const arrayNumeros = await sql`
+      SELECT TICKETS_NUMERO
+      FROM TICKETS_MSTR
+       `;
+
+       const boletos = arrayNumeros.map(r => r.tickets_numero);
+
+       res.json(boletos); 
+
   } catch (error) {
     console.error('Error al consultar:', error);
     return res.status(500).json({
