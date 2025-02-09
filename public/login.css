@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(to bottom, #faa6a6, #ffffff);
+    background: linear-gradient(to bottom, #33888e, #ffffff);
     width: 100%;
     background-attachment: fixed;
     /* Hace que el fondo se mueva con el scroll */
@@ -18,7 +18,7 @@ body {
   width: 350px;
   height: 300px;
   border-radius: 2rem;
-  background-color: #982727;
+  background-color: #258c72;
   position: relative;
   top: 100px;
   display: flex;
@@ -38,7 +38,7 @@ input{
     width: 100px;
     height: 50px;
     border-radius: 1rem;
-    border: solid rgb(193, 119, 119) 4px;
+    border: solid rgb(119, 193, 170) 4px;
     font-size: 15px;
     text-align: center;
 }
@@ -49,10 +49,10 @@ input::placeholder{
 }
 
 button{
-    background-color: #d45a5a;
+    background-color: #5ad49b;
     cursor: pointer;
     border-radius: 1rem;
-    color: white;
+    color: rgb(60, 114, 103);
     font-weight: 900;
     font-size: 10px;
     transition: 0.3s;
@@ -61,6 +61,6 @@ button{
 }
 
 button:hover{
-    background-color: #fdb2b2;
+    background-color: #b2fdef;
     color: black;
 }
