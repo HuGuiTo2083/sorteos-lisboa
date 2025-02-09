@@ -378,15 +378,7 @@ app.get('/api/consulta', async (req, res) => {
               ? sql`AND p.PEDIDO_CORREO LIKE ${'%' + correo + '%'}`
               : sql``
           }
-
-          ${
-            // Solo agregamos el AND si hay correo
-            tick && tick.trim() !== ''
-              ? sql`AND p.PEDIDO_CORREO LIKE ${'%' + tick + '%'}`
-              : sql``
-          }
-          
-          AND p.PEDIDO_APROBADO = true
+   AND p.PEDIDO_APROBADO = true
         ORDER BY 
           p.PEDIDO_CORREO,             -- la columna del DISTINCT ON
           u.USER_CANTIDAD_BOLETOS DESC 
@@ -407,7 +399,7 @@ app.get('/api/consulta', async (req, res) => {
 
 
 app.get('/api/array', async (req, res) => {
-  const { correo } = req.query;
+  const { correo} = req.query;
   try {
 
 
@@ -416,6 +408,7 @@ app.get('/api/array', async (req, res) => {
       SELECT TICKETS_NUMERO
       FROM TICKETS_MSTR
       WHERE TICKETS_CORREO = ${correo}
+     
     `;
 
     // 4) Retornamos todo al front

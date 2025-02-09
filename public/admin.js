@@ -50,11 +50,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const pedidos = await response.json()
             //total, tickets, client;
             
-            console.log(pedidos.clients)
+            // console.log(pedidos.clients)
              const contenedor = document.getElementById('contenedorConsultas');
              contenedor.innerHTML = '';
              const clientes = pedidos.clients
-              console.log('¿Es array Clientes?', Array.isArray(clientes)); // Debe ser true si es array
+            //   console.log('¿Es array Clientes?', Array.isArray(clientes)); // Debe ser true si es array
 
                 clientes.forEach( async pedido =>{
                     // console.log('corre: ', pedido.pedido_correo)
@@ -64,9 +64,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.log('tii: ', tickets)
                     let stringTickets = ''
                      console.log('¿Es array?', Array.isArray(tickets)); // Debe ser true si es array
-
+                    let myBoolean = false
+                    console.log('Lo que hay en tick es: ', tick)
                     tickets.forEach( ticket =>{
                     //   console.log('numeros hallados:', ticket.tickets_numero)
+                    if(ticket.tickets_numero.includes(tick)){
+                        myBoolean= true
+                        console.log('se encontró el ticket!!')
+                    }
                       stringTickets = stringTickets + ticket.tickets_numero + ", "
                     })
 
@@ -75,8 +80,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     const total = totalTickets.total[0].user_cantidad_boletos
                      console.log('total: ', total)
  
-
-                    //---construccion del div que contendrá los datos                      
+                    if(myBoolean || (!tick && tick.trim() == '')){
+                        myBoolean=false
+                        //---construccion del div que contendrá los datos                      
                     const divPedido = document.createElement('div');
                     // console.log(numero_tickets)
                     //console.log('aprobado: ' , pedido.pedido_aprobado)
@@ -126,6 +132,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     divPedido.appendChild(item4)
                     divPedido.appendChild(item5)
                     contenedor.appendChild(divPedido);
+
+                    }
+                    
     
         
                  })

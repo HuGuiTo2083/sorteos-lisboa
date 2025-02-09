@@ -124,7 +124,7 @@ justify-content: center;
 }
 
 .item-consu:nth-child(2) .subDiv:nth-child(2){
- font-size: 8px;
+ font-size: clamp(8px, 2vw, 15px)
 }
 
 .divConsu{
@@ -215,6 +215,7 @@ input{
     border: 2px white solid;
     background-color: #65c1b5;
     color:#213e39;
+    padding-left: 10px;
 }
 
 input::placeholder{
