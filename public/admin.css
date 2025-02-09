@@ -123,6 +123,10 @@ justify-content: center;
     justify-content: center;
 }
 
+.item-consu:nth-child(2) .subDiv:nth-child(2){
+ font-size: 8px;
+}
+
 .divConsu{
     width: 90%;
     position: relative;

@@ -378,6 +378,13 @@ app.get('/api/consulta', async (req, res) => {
               ? sql`AND p.PEDIDO_CORREO LIKE ${'%' + correo + '%'}`
               : sql``
           }
+
+          ${
+            // Solo agregamos el AND si hay correo
+            tick && tick.trim() !== ''
+              ? sql`AND p.PEDIDO_CORREO LIKE ${'%' + tick + '%'}`
+              : sql``
+          }
           
           AND p.PEDIDO_APROBADO = true
         ORDER BY 
