@@ -154,13 +154,13 @@ app.put('/api/pedidos/:referencia', async (req, res) => {
     // sintaxis: sql`INSERT INTO table ${ sql(items, 'col1', 'col2', ...) }`
     await sql`
       INSERT INTO TICKETS_MSTR ${sql(
-        nuevosTickets,
-        'tickets_numero',
-        'tickets_referencia',
-        'tickets_propietario',
-        'tickets_correo',
-        'tickets_fecha_compra'
-      )}
+      nuevosTickets,
+      'tickets_numero',
+      'tickets_referencia',
+      'tickets_propietario',
+      'tickets_correo',
+      'tickets_fecha_compra'
+    )}
     `;
 
     // 5. Enviamos correo de confirmación
@@ -209,11 +209,11 @@ app.put('/api/pedidos/:referencia', async (req, res) => {
  * Aprobar un pedido y asignar boletos: DELETE /api/pedidos/:referencia
  */
 app.delete('/api/pedidos/:referencia/:correo', async (req, res) => {
-    try {
-      const referencia = req.params.referencia
-      const correo = req.params.correo
+  try {
+    const referencia = req.params.referencia
+    const correo = req.params.correo
 
-      // 1. Verificamos si existe un pedido con esa referencia
+    // 1. Verificamos si existe un pedido con esa referencia
     //   const [pedidoEncontrado] = await sql`
     //     SELECT *
     //     FROM PEDIDO_MSTR
@@ -223,46 +223,46 @@ app.delete('/api/pedidos/:referencia/:correo', async (req, res) => {
     //   if (!pedidoEncontrado) {
     //     return res.status(404).json({ error: 'Pedido no encontrado' });
     //   }
-  
-      // 2. Actualizamos el pedido como aprobado
-      const [pedidoBorrado] = await sql`
+
+    // 2. Actualizamos el pedido como aprobado
+    const [pedidoBorrado] = await sql`
         DELETE FROM  PEDIDO_MSTR
         WHERE PEDIDO_REFERENCIAS = ${referencia} AND PEDIDO_CORREO =  ${correo}
         RETURNING *
       `;
 
 
-      // 3. Borramos el registro de la ticket master
-      const [ticketsBorrados] = await sql`
+    // 3. Borramos el registro de la ticket master
+    const [ticketsBorrados] = await sql`
         DELETE FROM  TICKETS_MSTR
         WHERE TICKETS_REFERENCIA = ${referencia} AND TICKETS_CORREO =  ${correo}
         RETURNING *
       `;
 
-      // 3. Borramos el registro de la user master
-      const [userBorrados] = await sql`
+    // 3. Borramos el registro de la user master
+    const [userBorrados] = await sql`
         DELETE FROM  USER_MSTR
         WHERE USER_CORREO =  ${correo}
         RETURNING *
       `;
 
-      
-  
-  
-  
-  
-      // 6. Respuesta final
-      return res.json({
-        success: true,
-        pedido: pedidoBorrado,
-        tickets: ticketsBorrados,
-        user: userBorrados
-      });
-    } catch (error) {
-      console.error('Error al procesar PUT /api/pedidos/:referencia:', error);
-      return res.status(500).json({ error: 'Error interno al actualizar el pedido' });
-    }
-  });
+
+
+
+
+
+    // 6. Respuesta final
+    return res.json({
+      success: true,
+      pedido: pedidoBorrado,
+      tickets: ticketsBorrados,
+      user: userBorrados
+    });
+  } catch (error) {
+    console.error('Error al procesar PUT /api/pedidos/:referencia:', error);
+    return res.status(500).json({ error: 'Error interno al actualizar el pedido' });
+  }
+});
 
 /**
  * Guardar un nuevo pedido: POST /api/pedidos
@@ -299,14 +299,14 @@ app.post('/api/pedidos', async (req, res) => {
       
     `;
 
-    if(BuscarUsuario){
-        const [ActualizarNúmeroPedidos] = await sql`
+    if (BuscarUsuario) {
+      const [ActualizarNúmeroPedidos] = await sql`
         UPDATE USER_MSTR SET USER_CANTIDAD_BOLETOS = USER_CANTIDAD_BOLETOS + ${pedido.boletos} WHERE USER_CORREO= ${pedido.correo}
         RETURNING *
       `;
     }
-    else{
-        const [InsertarNúmeroPedidos] = await sql`
+    else {
+      const [InsertarNúmeroPedidos] = await sql`
         INSERT INTO USER_MSTR (USER_CORREO, USER_CANTIDAD_BOLETOS)
         VALUES( ${pedido.correo}, ${pedido.boletos})
         RETURNING *
@@ -335,6 +335,58 @@ app.post('/api/pedidos', async (req, res) => {
       error: error.message
     });
   }
+});
+
+
+app.get('/api/consulta', async (req, res) => {
+  const { correo, tick, ref } = req.query;
+  // const referencia = req.params.referencia
+  // const correo = req.params.correo
+  // const ticket = req.params.ticket
+  // 3. Borramos el registro de la user master
+  try{
+     
+  const [TotalTickets] = await sql`
+  SELECT USER_CANTIDAD_BOLETOS
+  FROM USER_MSTR
+  WHERE USER_CORREO= ${correo}
+`;
+
+
+const [ArrayNumeros] = await sql`
+  SELECT TICKETS_NUMERO
+  FROM TICKETS_MSTR
+  WHERE TICKETS_CORREO= ${correo}
+`;
+
+const [ClientData] = await sql`
+  SELECT PEDIDO_NOMBRE, PEDIDO_APELLIDO, PEDIDO_NUMERO,  PEDIDO_CORREO
+  FROM PEDIDO_MSTR
+  WHERE PEDIDO_CORREO= ${correo}
+  FETCH FIRST 1 ROWS ONLY
+`;
+
+return res.json({
+ 
+  total: TotalTickets,
+  tickets: ArrayNumeros,
+  client: ClientData
+  
+});
+
+
+  }
+  catch(error){
+    console.error('Error al guardar el pedido:', error);
+    return res.status(500).json({
+      success: false,
+      message: 'Error al consultar',
+      error: error.message
+    });
+  }
+
+
+
 });
 
 // =============================
