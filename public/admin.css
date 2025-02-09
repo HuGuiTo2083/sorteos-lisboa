@@ -97,7 +97,7 @@ justify-content: center;
 }
 
 .dvFiltro{
-    width: 95%;
+    width: 98%;
     height: auto;
     padding: 20px;
     display: flex;
@@ -129,7 +129,7 @@ justify-content: center;
     background-color: #b2fdf3;
     border-radius: 1rem;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 2fr 2fr;
     grid-template-rows: 150px;
    column-gap: 5px;
     overflow: hidden;
@@ -173,7 +173,7 @@ justify-content: center;
     background-color: #63b6ab;
     
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 12px;
+    font-size: clamp(10px, 2vw, 17px);
     color: black;
 
 }
