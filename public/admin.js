@@ -207,7 +207,7 @@ async function cargarTickera(){
         contenedor.innerHTML = ''; // Limpia por si acaso
 
         // 4) Generamos los 10,000 boletos
-        for (let i = 1; i <= 10000; i++) {
+        for (let i = 0; i <= 10000; i++) {
           const numBoleto = formatoBoleto(i); // '0001', '0002', etc.
           
           // Creamos el div
