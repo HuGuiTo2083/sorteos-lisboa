@@ -83,6 +83,7 @@ z-index: -1000;
     
    justify-content: center;
     gap:20px;
+    column-gap: 50px;
 }
 
 #contenedorRegistros{
@@ -111,6 +112,8 @@ z-index: -1000;
 .pendiente{
     border: solid rgb(184, 255, 238) 5px;
     background-color: #213e39;
+    color: rgb(255, 255, 255);
+
 }
 
 @font-face {
@@ -119,9 +122,8 @@ z-index: -1000;
 }
 
 .dvPedido{
-    width: 230px;
-    height: auto;
-    min-height: calc(100% + 20px);
+    width: 250px;
+    
     border-radius: 2rem;
     text-align: center;
     display: flex;
@@ -130,7 +132,6 @@ z-index: -1000;
     font-size: 15px;
     font-weight: 900;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: rgb(255, 255, 255);
     
 }
 
