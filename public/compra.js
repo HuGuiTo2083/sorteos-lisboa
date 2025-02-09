@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         pedido.correo = document.getElementById('inEmail').value;
         pedido.nombre = document.getElementById('inName').value;
         pedido.apellido = document.getElementById('inLastName').value;
-        pedido.referencias = parseInt(document.getElementById('inFor').value);
+        pedido.referencias = document.getElementById('inFor').value;
         pedido.numero = parseInt(document.getElementById('inNumber').value);
         pedido.aprobado = false
         pedido.boletos = parseInt(cantidad);
@@ -92,9 +92,9 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     
             const data = await response.json();
-            const text = await response.text();
+            // const text = await response.text();
 
-            console.log('Respuesta en texto:', text); // <-- para ver si es HTML o JSON
+            // console.log('Respuesta en texto:', text); // <-- para ver si es HTML o JSON
 
             if (data.success) {
                 alert('Pedido realizado correctamente');

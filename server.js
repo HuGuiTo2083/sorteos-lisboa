@@ -1,357 +1,346 @@
-// Al inicio de tu archivo serve
-
-
-// server.js
+import 'dotenv/config';
 import express from 'express';
-import { promises as fs } from 'fs';
-import * as fsSync from 'fs';
-import path from 'path';
+import cors from 'cors';
 import nodemailer from 'nodemailer';
-import { Octokit } from '@octokit/rest';
-import dotenv from 'dotenv';
+// import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import https from 'https';
-import cors from 'cors';
 
+
+
+// dotenv.config();
+console.log('URL de conexión:', process.env.DATABASE_URL);
+
+
+// Importamos nuestra conexión a Postgres
+import sql from './db.js';
 
 // Crear la instancia de la aplicación Express
 const app = express();
+
 // Middleware para parsear JSON y servir archivos estáticos
 app.use(express.json());
 app.use(express.static('public'));
 
-
-app.use(cors({
-    origin: ['https://sorteoslisboaranch.com', 'http://localhost:3000', 'http://127.0.0.1:3000'],
+// Configuración de CORS (ajusta los orígenes según tus necesidades)
+app.use(
+  cors({
+    origin: [
+      'https://sorteoslisboaranch.com',
+      'http://localhost:3000',
+      'http://127.0.0.1:3000'
+    ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization']
-}));
+  })
+);
+
+// Para obtener la ruta del archivo
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-dotenv.config();
-
-console.log("TOKEN:", process.env.GITHUB_TOKEN ? "EXISTE" : "NO existe");
-
-
-class GitHubSync {
-    constructor(owner, repo) {
-        // Desactivar la verificación de certificados de manera más completa
-        
-        this.octokit = new Octokit({ 
-            auth: process.env.GITHUB_TOKEN,
-            log: {
-                debug: (msg) => console.log('GitHub Debug:', msg),
-                error: (msg) => console.error('GitHub Error:', msg)
-            },
-            baseUrl: 'https://api.github.com',
-            request: {
-                timeout: 15000
-            }
-           
-        });
-        this.owner = owner;
-        this.repo = repo;
-    }
-
-    async testConnection() {
-        try {
-            // Intentar una operación más simple primero
-            const { data } = await this.octokit.rest.users.getAuthenticated();
-            console.log('Autenticación exitosa como:', data.login);
-            return true;
-        } catch (error) {
-            console.error('Error detallado:', {
-                mensaje: error.message,
-                status: error.status,
-                headers: error.response?.headers,
-                causa: error.cause
-            });
-            return false;
-        }
-    }
-  
-    async updateJsonFile(path, content) {
-        try {
-          const currentFile = await this.octokit.repos.getContent({
-            owner: this.owner,
-            repo: this.repo,
-            path: path,
-          });
-      
-          const response = await this.octokit.repos.createOrUpdateFileContents({
-            owner: this.owner,
-            repo: this.repo,
-            path: path,
-            message: 'Actualización automática del JSON',
-            content: Buffer.from(JSON.stringify(content, null, 2)).toString('base64'),
-            sha: currentFile.data.sha,
-            branch: 'master'
-          });
-          return response.data;
-      
-        } catch (error) {
-          // Añade un log MUY detallado:
-          console.error('Error al actualizar el archivo:', {
-            mensaje: error.message,
-            status: error.status,
-            data: error.response?.data,         // <-- Aquí aparece el cuerpo (HTML o JSON) de la respuesta
-            headers: error.response?.headers,
-          });
-          throw error;
-        }
-      }
-      
-  }
-
-  // Ejemplo de uso en tu aplicación:
-const sync = new GitHubSync(
-        'HuGuiTo2083',
-    'sorteos-lisboa'
-  );
-
-// Función para probar la conexión
-async function probarConexion() {
-    try {
-        const resultado = await sync.testConnection();
-        if (resultado) {
-            console.log('✅ Conexión exitosa con GitHub');
-        } else {
-            console.log('❌ Error al conectar con GitHub');
-        }
-    } catch (error) {
-        console.error('Error en la prueba de conexión:', error);
-    }
-}
-
-// Llama a la función cuando inicias el servidor
-probarConexion();
-
-  // Función para usar cuando modificas tu JSON
-  async function actualizarJSON(archivo, nuevosDatos) {
-    try {
-        // ...updateJsonFile o testConnection...
-        console.log('Intentando actualizar en GitHub:', archivo);
-        console.log('Datos a actualizar:', nuevosDatos);
-        
-        await sync.updateJsonFile(archivo, nuevosDatos);
-        console.log('✅ JSON actualizado exitosamente en GitHub');
-      } catch (error) {
-        console.error('Error al comunicar con GitHub:', {
-          mensaje: error.message,
-          status: error.status,
-          data: error.response?.data,
-          request: error.request
-        });
-      }
-  
-}
-// Ruta al archivo de tickets
-const ticketsPath = path.join(__dirname, 'tickets.json');
-
-// Función para leer tickets existentes
-async function leerTickets() {
-    try {
-        // Verificar si el archivo existe
-        if (!fsSync.existsSync(ticketsPath)) {
-            // Si no existe, crear un archivo con un array vacío
-            await fs.writeFile(ticketsPath, JSON.stringify([], null, 2));
-            return [];
-        }
-        const data = await fs.readFile(ticketsPath, 'utf8');
-        return JSON.parse(data);
-    } catch (error) {
-        console.error('Error al leer tickets:', error);
-        return []; // Retorna array vacío en caso de error
-    }
-}
-
-// Función para generar números aleatorios únicos
-async function generarNumerosBoletosUnicos(cantidad) {
-    const tickets = await leerTickets();
-    const numerosExistentes = new Set(tickets.map(t => t.numero));
-    const numerosGenerados = new Set();
-    
-    while (numerosGenerados.size < cantidad) {
-        const numeroAleatorio = Math.floor(Math.random() * 10000) + 1;
-        if (!numerosExistentes.has(numeroAleatorio) && !numerosGenerados.has(numeroAleatorio)) {
-            numerosGenerados.add(numeroAleatorio);
-        }
-    }
-    
-    return Array.from(numerosGenerados);
-}
-
-// Función para guardar nuevos tickets
-async function guardarTickets(nuevosTickets) {
-    const tickets = await leerTickets();
-    tickets.push(...nuevosTickets);
-    await fs.writeFile(ticketsPath, JSON.stringify(tickets, null, 2));
-    // await actualizarJSON('tickets.json', tickets);
-}
-
-
-
-
-// Configuración del transportador de correo
+// =============================
+// Configuración de Nodemailer
+// =============================
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'sorteolisboaranch.0@gmail.com', // Tu correo Gmail
-        pass: 'ndtr zliq scpl tqud' // Contraseña de aplicación de Gmail
-    }
+  service: 'gmail',
+  auth: {
+    user: 'sorteolisboaranch.0@gmail.com',
+    pass: 'ndtr zliq scpl tqud'
+  }
 });
 
-// Define la ruta del archivo aquí, al inicio
-const pedidosPath = path.join(__dirname, 'pedidos.json');
+/**
+ * Función para generar números de boletos aleatorios no repetidos.
+ * Comprueba la tabla TICKETS_MSTR para ver qué números existen
+ * y genera los faltantes de forma aleatoria.
+ */
+async function generarNumerosBoletosUnicos(cantidad) {
+  try {
+    // 1. Obtenemos todos los tickets ya registrados para no duplicar
+    const ticketsExistentes = await sql`
+      SELECT TICKETS_NUMERO FROM TICKETS_MSTR
+    `;
 
+    // 2. Convertimos los resultados en un Set
+    const numerosExistentes = new Set(
+      ticketsExistentes.map(t => t.tickets_numero)
+    );
 
+    // 3. Generamos nuevos números
+    const numerosGenerados = new Set();
 
+    while (numerosGenerados.size < cantidad) {
+      const numeroAleatorio = Math.floor(Math.random() * 10000) + 1;
+      if (
+        !numerosExistentes.has(numeroAleatorio) &&
+        !numerosGenerados.has(numeroAleatorio)
+      ) {
+        numerosGenerados.add(numeroAleatorio);
+      }
+    }
 
+    return Array.from(numerosGenerados);
+  } catch (error) {
+    console.error('Error al generar boletos:', error);
+    return [];
+  }
+}
 
+// =============================
+// RUTAS
+// =============================
 
-
-
-// Ruta para obtener todos los pedidos
+/**
+ * Obtener todos los pedidos: GET /api/pedidos
+ */
 app.get('/api/pedidos', async (req, res) => {
-    try {
-        const pedidosPath = path.join(__dirname, 'pedidos.json');
-        const data = await fs.readFile(pedidosPath, 'utf8');
-        res.json(JSON.parse(data));
-    } catch (error) {
-        console.error('Error al leer pedidos:', error);
-
-        res.status(500).json({ error: 'Error al leer los pedidos' });
-    }
+  try {
+    // Leemos todos los registros de PEDIDO_MSTR
+    const pedidos = await sql`
+      SELECT * FROM PEDIDO_MSTR
+    `;
+    // Retornamos al frontend como JSON
+    return res.json(pedidos);
+  } catch (error) {
+    console.error('Error inesperado al obtener pedidos:', error);
+    return res.status(500).json({ error: 'Error interno al obtener pedidos' });
+  }
 });
 
-// Actualiza la ruta PUT
+/**
+ * Aprobar un pedido y asignar boletos: PUT /api/pedidos/:referencia
+ */
 app.put('/api/pedidos/:referencia', async (req, res) => {
-    try {
-        const referencia = parseInt(req.params.referencia);
-        const data = await fs.readFile(pedidosPath, 'utf8');
-        const pedidos = JSON.parse(data);
-        
-        const pedidoIndex = pedidos.findIndex(p => p.referencias === referencia);
-        if (pedidoIndex !== -1) {
-            pedidos[pedidoIndex].aprobado = true;
-            await fs.writeFile(pedidosPath, JSON.stringify(pedidos, null, 2));
-            // await actualizarJSON('pedidos.json', pedidos);
-            // Generar números de boletos
-            const pedido = pedidos[pedidoIndex];
-            const numerosGenerados = await generarNumerosBoletosUnicos(pedido.boletos);
-            
-            // Guardar los nuevos tickets
-            const nuevosTickets = numerosGenerados.map(numero => ({
-                numero,
-                referencia: pedido.referencias,
-                propietario: `${pedido.nombre} ${pedido.apellido}`,
-                correo: pedido.correo,
-                fechaCompra: new Date().toISOString()
-            }));
-            
-            await guardarTickets(nuevosTickets);
-
-            // Enviar correo de confirmación
-            const mailOptions = {
-                from: 'sorteolisboaranch.0@gmail.com',
-                to: pedido.correo,
-                subject: '¡Tu pedido ha sido aprobado!',
-                html: `
-                    <h1>¡Pedido Aprobado!</h1>
-                    <p>Hola ${pedido.nombre} ${pedido.apellido},</p>
-                    <p>Nos complace informarte que tu pedido con referencia #${pedido.referencias} ha sido aprobado.</p>
-                    <h2>Detalles del pedido:</h2>
-                    <ul>
-                        <li>Número de boletos: ${pedido.boletos}</li>
-                        <li>Precio total: $${pedido.precioTotal}</li>
-                        <li>Número de contacto: ${pedido.numero}</li>
-                    </ul>
-                    <h2>Tus números de boletos son:</h2>
-                    <ul>
-                        ${numerosGenerados.map(numero => 
-                            `<li>Boleto #${numero}</li>`
-                        ).join('')}
-                    </ul>
-                    <p>¡Gracias por tu compra y mucha suerte!</p>
-                `
-            };
-
-            try {
-                await transporter.sendMail(mailOptions);
-                console.log('Correo enviado correctamente');
-            } catch (emailError) {
-                console.error('Error al enviar correo:', emailError);
-                console.log('Error al enviar el error: ', emailError)
-            }
-
-            res.json({ 
-                success: true, 
-                tickets: numerosGenerados 
-            });
-        } else {
-            res.status(404).json({ error: 'Pedido no encontrado' });
-        }
-    } catch (error) {
-        console.error('Error al actualizar pedido:', error);
-        console.log('Error al actualizar pedido:', error);
-
-        res.status(500).json({ error: 'Error al actualizar el pedido' });
+  try {
+    const referencia = req.params.referencia
+    // 1. Verificamos si existe un pedido con esa referencia
+    const [pedidoEncontrado] = await sql`
+      SELECT *
+      FROM PEDIDO_MSTR
+      WHERE PEDIDO_REFERENCIAS = ${referencia}
+      LIMIT 1
+    `;
+    if (!pedidoEncontrado) {
+      return res.status(404).json({ error: 'Pedido no encontrado' });
     }
+
+    // 2. Actualizamos el pedido como aprobado
+    const [pedidoActualizado] = await sql`
+      UPDATE PEDIDO_MSTR
+      SET PEDIDO_APROBADO = true
+      WHERE PEDIDO_REFERENCIAS = ${referencia}
+      RETURNING *
+    `;
+
+    // 3. Generamos los números de boletos únicos
+    const numerosGenerados = await generarNumerosBoletosUnicos(
+      pedidoEncontrado.pedido_boletos
+    );
+
+    // 4. Insertamos los nuevos tickets en TICKETS_MSTR
+    //    Para insertar varios registros, construimos el array de objetos
+    //    y luego usamos la sintaxis de postgres() para multiple inserts.
+    const nuevosTickets = numerosGenerados.map(num => ({
+      tickets_numero: num,
+      tickets_referencia: pedidoEncontrado.pedido_referencias,
+      tickets_propietario: `${pedidoEncontrado.pedido_nombre} ${pedidoEncontrado.pedido_apellido}`,
+      tickets_correo: pedidoEncontrado.pedido_correo,
+      tickets_fecha_compra: new Date()
+    }));
+
+    // Con la librería `postgres`, podemos hacer un insert masivo así:
+    // sintaxis: sql`INSERT INTO table ${ sql(items, 'col1', 'col2', ...) }`
+    await sql`
+      INSERT INTO TICKETS_MSTR ${sql(
+        nuevosTickets,
+        'tickets_numero',
+        'tickets_referencia',
+        'tickets_propietario',
+        'tickets_correo',
+        'tickets_fecha_compra'
+      )}
+    `;
+
+    // 5. Enviamos correo de confirmación
+    const mailOptions = {
+      from: 'sorteolisboaranch.0@gmail.com',
+      to: pedidoEncontrado.pedido_correo,
+      subject: '¡Tu pedido ha sido aprobado!',
+      html: `
+        <h1>¡Pedido Aprobado!</h1>
+        <p>Hola ${pedidoEncontrado.pedido_nombre} ${pedidoEncontrado.pedido_apellido},</p>
+        <p>Nos complace informarte que tu pedido con referencia #${pedidoEncontrado.pedido_referencias} ha sido aprobado.</p>
+        <h2>Detalles del pedido:</h2>
+        <ul>
+          <li>Número de boletos: ${pedidoEncontrado.pedido_boletos}</li>
+          <li>Precio total: $${pedidoEncontrado.pedido_precio_total}</li>
+          <li>Número de contacto: ${pedidoEncontrado.pedido_numero}</li>
+        </ul>
+        <h2>Tus números de boletos son:</h2>
+        <ul>
+          ${numerosGenerados.map(numero => `<li>Boleto #${numero}</li>`).join('')}
+        </ul>
+        <p>¡Gracias por tu compra y mucha suerte!</p>
+      `
+    };
+
+    try {
+      await transporter.sendMail(mailOptions);
+      console.log('Correo enviado correctamente');
+    } catch (emailError) {
+      console.error('Error al enviar correo:', emailError);
+    }
+
+    // 6. Respuesta final
+    return res.json({
+      success: true,
+      pedido: pedidoActualizado,
+      tickets: numerosGenerados
+    });
+  } catch (error) {
+    console.error('Error al procesar PUT /api/pedidos/:referencia:', error);
+    return res.status(500).json({ error: 'Error interno al actualizar el pedido' });
+  }
 });
 
-// Ruta para guardar pedidos
+/**
+ * Aprobar un pedido y asignar boletos: DELETE /api/pedidos/:referencia
+ */
+app.delete('/api/pedidos/:referencia/:correo', async (req, res) => {
+    try {
+      const referencia = req.params.referencia
+      const correo = req.params.correo
+
+      // 1. Verificamos si existe un pedido con esa referencia
+    //   const [pedidoEncontrado] = await sql`
+    //     SELECT *
+    //     FROM PEDIDO_MSTR
+    //     WHERE PEDIDO_REFERENCIAS = ${referencia}
+    //     LIMIT 1
+    //   `;
+    //   if (!pedidoEncontrado) {
+    //     return res.status(404).json({ error: 'Pedido no encontrado' });
+    //   }
+  
+      // 2. Actualizamos el pedido como aprobado
+      const [pedidoBorrado] = await sql`
+        DELETE FROM  PEDIDO_MSTR
+        WHERE PEDIDO_REFERENCIAS = ${referencia} AND PEDIDO_CORREO =  ${correo}
+        RETURNING *
+      `;
+
+
+      // 3. Borramos el registro de la ticket master
+      const [ticketsBorrados] = await sql`
+        DELETE FROM  TICKETS_MSTR
+        WHERE TICKETS_REFERENCIA = ${referencia} AND TICKETS_CORREO =  ${correo}
+        RETURNING *
+      `;
+
+      // 3. Borramos el registro de la user master
+      const [userBorrados] = await sql`
+        DELETE FROM  USER_MSTR
+        WHERE USER_CORREO =  ${correo}
+        RETURNING *
+      `;
+
+      
+  
+  
+  
+  
+      // 6. Respuesta final
+      return res.json({
+        success: true,
+        pedido: pedidoBorrado,
+        tickets: ticketsBorrados,
+        user: userBorrados
+      });
+    } catch (error) {
+      console.error('Error al procesar PUT /api/pedidos/:referencia:', error);
+      return res.status(500).json({ error: 'Error interno al actualizar el pedido' });
+    }
+  });
+
+/**
+ * Guardar un nuevo pedido: POST /api/pedidos
+ */
 app.post('/api/pedidos', async (req, res) => {
-    console.log("2aa")
-    console.log('Headers recibidos:', req.headers);
-    console.log('Body recibido:', req.body);
-    try {
-        let pedidos = [];
-        
-        // Verificar si el archivo existe
-        if (fsSync.existsSync(pedidosPath)) {
-            const contenido = await fs.readFile(pedidosPath, 'utf8');
-            console.log(contenido)
-            try {
-                pedidos = JSON.parse(contenido);
-            } catch (parseError) {
-                console.error('Error al parsear JSON:', parseError);
-                pedidos = []; // Si hay error al parsear, comenzamos con array vacío
-            }
-        }
+  try {
+    const pedido = req.body;
 
-        // Verificar que pedidos sea un array
-        if (!Array.isArray(pedidos)) {
-            pedidos = [];
-        }
+    // Insertamos el nuevo pedido en la tabla PEDIDO_MSTR
+    // Asegúrate de alinear los campos con las columnas de tu tabla
+    const [nuevoPedido] = await sql`
+      INSERT INTO PEDIDO_MSTR (
+        PEDIDO_NOMBRE,
+        PEDIDO_APELLIDO,
+        PEDIDO_CORREO,
+        PEDIDO_BOLETOS,
+        PEDIDO_PRECIO_TOTAL,
+        PEDIDO_REFERENCIAS,
+        PEDIDO_NUMERO
+      ) VALUES (
+        ${pedido.nombre},
+        ${pedido.apellido},
+        ${pedido.correo},
+        ${pedido.boletos},
+        ${pedido.precioTotal},
+        ${pedido.referencias},
+        ${pedido.numero}
+      )
+      RETURNING *
+    `;
 
-        // Añadir el nuevo pedido
-        pedidos.push(req.body);
+    const [BuscarUsuario] = await sql`
+      SELECT * FROM USER_MSTR WHERE USER_CORREO= ${pedido.correo}
+      
+    `;
 
-        // Guardar el archivo actualizado
-        await fs.writeFile(pedidosPath, JSON.stringify(pedidos, null, 2), 'utf8');
-        console.log('Archivo guardado localmente, intentando sincronizar con GitHub...');
-         await actualizarJSON('pedidos.json', pedidos);
-        console.log('Proceso completo');
-        res.json({ success: true, message: 'Pedido guardado correctamente' });
-    } catch (error) {
-        console.error('Error específico:', error);
-        res.status(500).json({ 
-            success: false, 
-            message: 'Error al guardar el pedido',
-            error: error.message 
-        });
+    if(BuscarUsuario){
+        const [ActualizarNúmeroPedidos] = await sql`
+        UPDATE USER_MSTR SET USER_CANTIDAD_BOLETOS = USER_CANTIDAD_BOLETOS + ${pedido.boletos} WHERE USER_CORREO= ${pedido.correo}
+        RETURNING *
+      `;
     }
+    else{
+        const [InsertarNúmeroPedidos] = await sql`
+        INSERT INTO USER_MSTR (USER_CORREO, USER_CANTIDAD_BOLETOS)
+        VALUES( ${pedido.correo}, ${pedido.boletos})
+        RETURNING *
+      `;
+    }
+
+
+    console.log(` ${pedido.nombre},
+        ${pedido.apellido},
+        ${pedido.correo},
+        ${pedido.boletos},
+        ${pedido.precioTotal},
+        ${pedido.referencias},
+        ${pedido.numero}`)
+
+    return res.json({
+      success: true,
+      message: 'Pedido guardado correctamente',
+      pedido: nuevoPedido
+    });
+  } catch (error) {
+    console.error('Error al guardar el pedido:', error);
+    return res.status(500).json({
+      success: false,
+      message: 'Error al guardar el pedido',
+      error: error.message
+    });
+  }
 });
 
-// app.listen(port, () => {
-//     console.log(`Servidor corriendo en http://localhost:${port}`);
-// });
-
-// Configuración del puerto
+// =============================
+// Iniciar el servidor
+// =============================
 const port = process.env.PORT || 3000;
 app.listen(port, '0.0.0.0', () => {
-    console.log(`Servidor corriendo en puerto ${port}`);
+  console.log(`Servidor corriendo en puerto ${port}`);
 });
