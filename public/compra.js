@@ -1,7 +1,27 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
 
     // console.log(document.getElementById('selectM').value)
 
+    //----------------------------------
+    const totalTickets = 10000;
+        let soldTickets = 0;
+
+        function updateProgress(sold) {
+            const percentage = (sold / totalTickets) * 100;
+            document.getElementById('progressFill').style.width = percentage + '%';
+            document.getElementById('percentageText').textContent = percentage.toFixed(1) + '%';
+            document.getElementById('ticketsSold').textContent = sold.toLocaleString();
+        }
+
+        
+
+        //-----extraer el numero de tickets
+        const response = await fetch('/api/ventatotal');
+        const totalBoletos = await response.json();
+        // console.log('Tipo de dato:', typeof totalBoletos);
+        // console.log('Valor:', totalBoletos);
+        updateProgress(parseInt(totalBoletos))
+        // --------------------
 
 
 

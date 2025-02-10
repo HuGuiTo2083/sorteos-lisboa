@@ -567,4 +567,55 @@ footer {
     font-size: 20px;
   }
 
+
+  .progress-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 30px;
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #61dab9;
+    transition: width 0.5s ease-in-out;
+    width: 0%;
+    animation: buttonGlow3 2s infinite;
+}
+
+@keyframes buttonGlow3 {
+    0%, 100% {
+        box-shadow: 0 0 10px #61dab9;
+    }
+    50% {
+        box-shadow: 0 0 20px #61dab9, 0 0 30px #61dab9;
+    }
+}
+
+
+
+
+.progress-text {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.progress-details {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    color: #ffffff;
+}
+
   

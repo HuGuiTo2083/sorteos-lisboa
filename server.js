@@ -73,9 +73,17 @@ async function generarNumerosBoletosUnicos(cantidad) {
 
     while (numerosGenerados.size < cantidad) {
       // Genera un número entero entre 0 y 9999
-      const numeroAleatorio = Math.floor(Math.random() * 10000);
-      // Convierte a string con 4 dígitos, rellenando con ceros a la izquierda
-      const boletoString = String(numeroAleatorio).padStart(4, '0');
+      let boletoString = '0000'
+      while(boletoString != '0000' && boletoString != '1111' &&  boletoString != '2222'
+         && boletoString != '3333' && boletoString != '4444' &&  boletoString != '5555'
+         && boletoString != '6666' && boletoString != '7777' &&  boletoString != '8888'
+         && boletoString != '9999'
+      ){
+        const numeroAleatorio = Math.floor(Math.random() * 10000);
+        // Convierte a string con 4 dígitos, rellenando con ceros a la izquierda
+         boletoString = String(numeroAleatorio).padStart(4, '0');
+      }
+      
 
       // Verificamos que no exista ni en la BD ni en lo ya generado en esta tanda
       if (
@@ -510,6 +518,25 @@ app.get('/api/totaltickets', async (req, res) => {
     });
   }
 });
+
+
+app.get('/api/ventatotal', async (req, res) => {
+  try {
+    // Leemos todos los registros de PEDIDO_MSTR
+    const [totalVendidos] = await sql`
+      SELECT COUNT(TICKETS_NUMERO) AS total FROM TICKETS_MSTR
+    `;
+    // Retornamos al frontend como JSON
+    
+    return res.json(totalVendidos.total);
+    
+  } catch (error) {
+    console.error('Error inesperado al obtener el total de los boletos vendidos hasta ahora:', error);
+    return res.status(500).json({ error: 'Error interno al obtener el total de boletos vendidos' });
+  }
+});
+
+
 
 // =============================
 // Iniciar el servidor
