@@ -168,6 +168,10 @@ justify-content: center;
  font-size: clamp(8px, 2vw, 15px)
 }
 
+.item-consu:nth-child(5) .subDiv:nth-child(2){
+    overflow-y: auto;
+}
+
 .divConsu{
     width: 90%;
     position: relative;
