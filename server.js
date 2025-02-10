@@ -62,6 +62,7 @@ async function generarNumerosBoletosUnicos(cantidad) {
     const ticketsExistentes = await sql`
       SELECT TICKETS_NUMERO FROM TICKETS_MSTR
     `;
+    const BLACKLIST = ['0000', '1111', '2222', '3333', '4444', '5555', '6666', '7777', '8888', '9999'];
 
     // 2. Creamos un Set con esos valores (serán strings si en la BD ya están con ceros)
     const numerosExistentes = new Set(
@@ -73,17 +74,25 @@ async function generarNumerosBoletosUnicos(cantidad) {
 
     while (numerosGenerados.size < cantidad) {
       // Genera un número entero entre 0 y 9999
-      let boletoString = '0000'
-      while(boletoString != '0000' && boletoString != '1111' &&  boletoString != '2222'
-         && boletoString != '3333' && boletoString != '4444' &&  boletoString != '5555'
-         && boletoString != '6666' && boletoString != '7777' &&  boletoString != '8888'
-         && boletoString != '9999'
-      ){
+      let boletoString
+      do {
         const numeroAleatorio = Math.floor(Math.random() * 10000);
-        // Convierte a string con 4 dígitos, rellenando con ceros a la izquierda
-         boletoString = String(numeroAleatorio).padStart(4, '0');
+        boletoString = String(numeroAleatorio).padStart(4, '0');
+      } while (BLACKLIST.includes(boletoString));
+      // Ahora boletoString NUNCA es 0000,1111,...9999
+      // Verificamos que no exista ni en la BD ni en lo ya generado en esta tanda
+      if (
+        !numerosExistentes.has(boletoString) &&
+        !numerosGenerados.has(boletoString)
+      ) {
+        numerosGenerados.add(boletoString);
       }
-      
+
+      const numeroAleatorio = Math.floor(Math.random() * 10000);
+      // Convierte a string con 4 dígitos, rellenando con ceros a la izquierda
+      boletoString = String(numeroAleatorio).padStart(4, '0');
+
+
 
       // Verificamos que no exista ni en la BD ni en lo ya generado en esta tanda
       if (
@@ -115,9 +124,9 @@ app.get('/api/pedidos', async (req, res) => {
       SELECT * FROM PEDIDO_MSTR
     `;
     // Retornamos al frontend como JSON
-    
+
     return res.json(pedidos);
-    
+
   } catch (error) {
     console.error('Error inesperado al obtener pedidos:', error);
     return res.status(500).json({ error: 'Error interno al obtener pedidos' });
@@ -381,11 +390,11 @@ app.get('/api/consulta', async (req, res) => {
         WHERE
           1=1
           ${
-            // Solo agregamos el AND si hay correo
-            correo && correo.trim() !== ''
-              ? sql`AND p.PEDIDO_CORREO LIKE ${'%' + correo + '%'}`
-              : sql``
-          }
+      // Solo agregamos el AND si hay correo
+      correo && correo.trim() !== ''
+        ? sql`AND p.PEDIDO_CORREO LIKE ${'%' + correo + '%'}`
+        : sql``
+      }
    AND p.PEDIDO_APROBADO = true
         ORDER BY 
           p.PEDIDO_CORREO,             -- la columna del DISTINCT ON
@@ -406,7 +415,7 @@ app.get('/api/consulta', async (req, res) => {
 });
 
 app.get('/api/correo', async (req, res) => {
-  const { numero} = req.query;
+  const { numero } = req.query;
   try {
 
 
@@ -436,7 +445,7 @@ app.get('/api/correo', async (req, res) => {
 
 
 app.get('/api/array', async (req, res) => {
-  const { correo} = req.query;
+  const { correo } = req.query;
   try {
 
 
@@ -465,7 +474,7 @@ app.get('/api/array', async (req, res) => {
 });
 
 app.get('/api/tickets', async (req, res) => {
-  
+
   try {
 
 
@@ -475,9 +484,9 @@ app.get('/api/tickets', async (req, res) => {
       FROM TICKETS_MSTR
        `;
 
-       const boletos = arrayNumeros.map(r => r.tickets_numero);
+    const boletos = arrayNumeros.map(r => r.tickets_numero);
 
-       res.json(boletos); 
+    res.json(boletos);
 
   } catch (error) {
     console.error('Error al consultar:', error);
@@ -527,9 +536,9 @@ app.get('/api/ventatotal', async (req, res) => {
       SELECT COUNT(TICKETS_NUMERO) AS total FROM TICKETS_MSTR
     `;
     // Retornamos al frontend como JSON
-    
+
     return res.json(totalVendidos.total);
-    
+
   } catch (error) {
     console.error('Error inesperado al obtener el total de los boletos vendidos hasta ahora:', error);
     return res.status(500).json({ error: 'Error interno al obtener el total de boletos vendidos' });
