@@ -89,7 +89,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     document.getElementById('pedidoForm').addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+        let cantidad2 = parseInt(input.value);
+
         const formData = new FormData(e.target);
         const pedido = Object.fromEntries(formData.entries());
         
@@ -100,7 +101,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         pedido.referencias = document.getElementById('inFor').value;
         pedido.numero = document.getElementById('inNumber').value;
         pedido.aprobado = false
-        pedido.boletos = parseInt(cantidad);
+        pedido.boletos = parseInt(cantidad2);
         pedido.precioTotal = parseInt(document.getElementById('precio').textContent);
         pedido.metodoPago = document.getElementById('selectM').value
         
