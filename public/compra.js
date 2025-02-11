@@ -2,6 +2,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // console.log(document.getElementById('selectM').value)
 
+
+    
+
     //----------------------------------
     const totalTickets = 10000;
         let soldTickets = 0;
@@ -26,6 +29,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
     const input = document.getElementById('contador');
+    input.addEventListener("input", function(evento) {
+        const valorActual = evento.target.value; // Obtener el valor actual
+        console.log("El valor ha cambiado:", valorActual);
+        actualizarPrecio()
+      });
+
     const btnIncrementar = document.getElementById('incrementar');
     const btnDecrementar = document.getElementById('decrementar');
     const labelPrecio = document.getElementById('precio');
@@ -90,7 +99,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('pedidoForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         let cantidad2 = parseInt(input.value);
-
+       console.log('cantidad: ' + cantidad2)
         const formData = new FormData(e.target);
         const pedido = Object.fromEntries(formData.entries());
         
