@@ -58,13 +58,13 @@ const transporter = nodemailer.createTransport({
  */
 async function generarNumerosBoletosUnicos(cantidad) {
   try {
-    // 1. Obtenemos los tickets ya registrados (ahora se guardan como strings)
+    // 1. Obtenemos los tickets ya registrados (como strings)
     const ticketsExistentes = await sql`
       SELECT TICKETS_NUMERO FROM TICKETS_MSTR
     `;
     const BLACKLIST = ['0000', '1111', '2222', '3333', '4444', '5555', '6666', '7777', '8888', '9999'];
 
-    // 2. Creamos un Set con esos valores (serán strings si en la BD ya están con ceros)
+    // 2. Creamos un Set con los números existentes
     const numerosExistentes = new Set(
       ticketsExistentes.map(t => t.tickets_numero)
     );
@@ -73,32 +73,15 @@ async function generarNumerosBoletosUnicos(cantidad) {
     const numerosGenerados = new Set();
 
     while (numerosGenerados.size < cantidad) {
-      // Genera un número entero entre 0 y 9999
-      let boletoString
+      let boletoString;
       do {
+        // Genera un número entre 0000 y 9999 (como string)
         const numeroAleatorio = Math.floor(Math.random() * 10000);
-        boletoString = String(numeroAleatorio).padStart(4, '0');
-      } while (BLACKLIST.includes(boletoString));
-      // Ahora boletoString NUNCA es 0000,1111,...9999
-      // Verificamos que no exista ni en la BD ni en lo ya generado en esta tanda
-      if (
-        !numerosExistentes.has(boletoString) &&
-        !numerosGenerados.has(boletoString)
-      ) {
-        numerosGenerados.add(boletoString);
-      }
+        boletoString = numeroAleatorio.toString().padStart(4, '0');
+      } while (BLACKLIST.includes(boletoString)); // Verifica blacklist
 
-      const numeroAleatorio = Math.floor(Math.random() * 10000);
-      // Convierte a string con 4 dígitos, rellenando con ceros a la izquierda
-      boletoString = String(numeroAleatorio).padStart(4, '0');
-
-
-
-      // Verificamos que no exista ni en la BD ni en lo ya generado en esta tanda
-      if (
-        !numerosExistentes.has(boletoString) &&
-        !numerosGenerados.has(boletoString)
-      ) {
+      // Verifica que no exista en BD ni en los generados
+      if (!numerosExistentes.has(boletoString) && !numerosGenerados.has(boletoString)) {
         numerosGenerados.add(boletoString);
       }
     }
@@ -109,7 +92,6 @@ async function generarNumerosBoletosUnicos(cantidad) {
     return [];
   }
 }
-
 // =============================
 // RUTAS
 // =============================
