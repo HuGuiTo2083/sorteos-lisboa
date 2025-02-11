@@ -200,7 +200,7 @@ app.put('/api/pedidos/:referencia/:correo/:cantidad', async (req, res) => {
       to: pedidoEncontrado.pedido_correo,
       subject: '¡Tu pedido ha sido aprobado!',
       html: `
-        <img src="public/images/0001.png" style="width:100%;height:auto;">
+        <img src="https://sorteoslisboaranch.com/images/0001.png" style="width:100%;height:100px; object-fit:cover;">
         <h1>¡Pedido Aprobado!</h1>
         <p>Hola ${pedidoEncontrado.pedido_nombre} ${pedidoEncontrado.pedido_apellido},</p>
         <p>Nos complace informarte que tu pedido con referencia #${pedidoEncontrado.pedido_referencias} ha sido aprobado.</p>
