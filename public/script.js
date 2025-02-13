@@ -1,27 +1,37 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Countdown Timer
-    function startCountdown() {
-        const countdownElement = document.getElementById('countdown');
-        let time = 3600; // 1 hour in seconds
-
-        const timer = setInterval(() => {
-            const hours = Math.floor(time / 3600);
-            const minutes = Math.floor((time % 3600) / 60);
-            const seconds = time % 60;
-
-            countdownElement.textContent = `${hours}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-
-            if (time <= 0) {
-                clearInterval(timer);
-                countdownElement.textContent = "¡Tiempo agotado!";
-            }
-            time--;
-        }, 1000);
+    function actualizarContador() {
+        // Fecha objetivo: 21 de marzo 2025, 12:00 AM (medianoche)
+        const fechaObjetivo = new Date(2025, 2, 21); // Los meses en JS van de 0 (Enero) a 11 (Diciembre)
+        const ahora = new Date();
+        
+        // Calcular diferencia
+        const diferencia = fechaObjetivo - ahora;
+        
+        // Si ya pasó la fecha
+        if (diferencia < 0) {
+            document.getElementById('countdown').innerHTML = "¡Tiempo cumplido!";
+            return;
+        }
+        
+        // Cálculos de tiempo
+        const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+        const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+        
+        // Formatear texto
+        const texto = `${dias}d ${horas.toString().padStart(2, '0')}h ${minutos.toString().padStart(2, '0')}m ${segundos.toString().padStart(2, '0')}s`;
+        
+        // Actualizar elemento
+        document.getElementById('countdown').innerHTML = texto;
     }
-
-    // Initialize countdown
-    startCountdown();
-
+    
+    // Actualizar cada segundo
+    setInterval(actualizarContador, 1000);
+    
+    // Ejecutar inmediatamente
+    actualizarContador();
     // Smooth scroll for buttons
     document.querySelectorAll('.buy-button').forEach(button => {
         button.addEventListener('click', () => {
