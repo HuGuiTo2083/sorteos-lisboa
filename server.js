@@ -58,37 +58,46 @@ const transporter = nodemailer.createTransport({
  */
 async function generarNumerosBoletosUnicos(cantidad) {
   try {
-    // 1. Obtenemos los tickets ya registrados (como strings)
+    // Validar que la cantidad sea un entero positivo
+    if (!Number.isInteger(cantidad) || cantidad <= 0) {
+      throw new Error('La cantidad debe ser un entero positivo');
+    }
+
+    // 1. Obtenemos los tickets existentes y definimos la blacklist
     const ticketsExistentes = await sql`
       SELECT TICKETS_NUMERO FROM TICKETS_MSTR
     `;
-    const BLACKLIST = ['0000', '1111', '2222', '3333', '4444', '5555', '6666', '7777', '8888', '9999'];
+    const BLACKLIST = new Set(['0000', '1111', '2222', '3333', '4444', '5555', '6666', '7777', '8888', '9999']);
 
-    // 2. Creamos un Set con los números existentes
-    const numerosExistentes = new Set(
-      ticketsExistentes.map(t => t.tickets_numero)
-    );
+    // 2. Calcular números disponibles
+    const numerosExistentes = new Set(ticketsExistentes.map(t => t.tickets_numero));
+    const totalNumerosPosibles = 10000;
+    const disponibles = totalNumerosPosibles - numerosExistentes.size - BLACKLIST.size;
 
-    // 3. Generamos nuevos números
-    const numerosGenerados = new Set();
+    // Validar si hay suficientes números disponibles
+    if (cantidad > disponibles) {
+      throw new Error(`Solo hay ${disponibles} números disponibles`);
+    }
 
-    while (numerosGenerados.size < cantidad) {
-      let boletoString;
-      do {
-        // Genera un número entre 0000 y 9999 (como string)
-        const numeroAleatorio = Math.floor(Math.random() * 10000);
-        boletoString = numeroAleatorio.toString().padStart(4, '0');
-      } while (BLACKLIST.includes(boletoString)); // Verifica blacklist
-
-      // Verifica que no exista en BD ni en los generados
-      if (!numerosExistentes.has(boletoString) && !numerosGenerados.has(boletoString)) {
-        numerosGenerados.add(boletoString);
+    // 3. Generar todos los números posibles y filtrar
+    const candidatos = [];
+    for (let i = 0; i < 10000; i++) {
+      const numero = i.toString().padStart(4, '0');
+      if (!BLACKLIST.has(numero) && !numerosExistentes.has(numero)) {
+        candidatos.push(numero);
       }
     }
 
-    return Array.from(numerosGenerados);
+    // 4. Algoritmo de Fisher-Yates para mezclar
+    for (let i = candidatos.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [candidatos[i], candidatos[j]] = [candidatos[j], candidatos[i]];
+    }
+
+    // 5. Seleccionar la cantidad requerida
+    return candidatos.slice(0, cantidad);
   } catch (error) {
-    console.error('Error al generar boletos:', error);
+    console.error('Error al generar boletos:', error.message);
     return [];
   }
 }
