@@ -4,9 +4,10 @@ import cors from 'cors';
 import nodemailer from 'nodemailer';
 // import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import { dirname, join }     from 'path';   // ← añade join
 import serverless from 'serverless-http';
-import { join } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname  = dirname(__filename);
 
 // dotenv.config();
 console.log('URL de conexión:', process.env.DATABASE_URL);
@@ -39,9 +40,6 @@ app.use(
   })
 );
 
-// Para obtener la ruta del archivo
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 // =============================
 // Configuración de Nodemailer
