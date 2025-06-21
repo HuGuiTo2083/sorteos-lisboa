@@ -1,16 +1,13 @@
 {
   "version": 2,
 
- 
   "functions": {
     "server.js": { "runtime": "nodejs20.x" }   
   },
 
   "routes": [
     { "src": "/api/(.*)", "dest": "/server.js" },
-
     { "handle": "filesystem" },
-
     { "src": "/(.*)", "dest": "/public/$1" }
   ]
 }
