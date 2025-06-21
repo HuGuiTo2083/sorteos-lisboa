@@ -6,7 +6,7 @@ import nodemailer from 'nodemailer';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import serverless from 'serverless-http';
-
+import { join } from 'path';
 
 // dotenv.config();
 console.log('URL de conexión:', process.env.DATABASE_URL);
@@ -20,13 +20,15 @@ const app = express();
 
 // Middleware para parsear JSON y servir archivos estáticos
 app.use(express.json());
-app.use(express.static('public'));
+//app.use(express.static('public'));
+app.use(express.static(join(__dirname, 'public')));
+
 
 // Configuración de CORS (ajusta los orígenes según tus necesidades)
 app.use(
   cors({
     origin: [
-      
+
       'https://sorteoslisboaranch.com',
       'http://localhost:3000',
       'http://127.0.0.1:3000'
