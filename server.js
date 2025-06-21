@@ -547,4 +547,5 @@ const port = process.env.PORT || 3000;
 //   console.log(`Servidor corriendo en puerto ${port}`);
 // });
 
-export const handler = serverless(app);
+// export const handler = serverless(app);
+export default app
