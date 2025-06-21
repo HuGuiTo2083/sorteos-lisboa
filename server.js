@@ -26,6 +26,7 @@ app.use(express.static('public'));
 app.use(
   cors({
     origin: [
+      
       'https://sorteoslisboaranch.com',
       'http://localhost:3000',
       'http://127.0.0.1:3000'
