@@ -5,7 +5,7 @@ import nodemailer from 'nodemailer';
 // import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-
+import serverless from 'serverless-http';
 
 
 // dotenv.config();
@@ -543,6 +543,8 @@ app.get('/api/ventatotal', async (req, res) => {
 // Iniciar el servidor
 // =============================
 const port = process.env.PORT || 3000;
-app.listen(port, '0.0.0.0', () => {
-  console.log(`Servidor corriendo en puerto ${port}`);
-});
+// app.listen(port, '0.0.0.0', () => {
+//   console.log(`Servidor corriendo en puerto ${port}`);
+// });
+
+export const handler = serverless(app);
