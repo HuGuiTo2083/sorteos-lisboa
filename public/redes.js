@@ -19,10 +19,10 @@ wa.addEventListener('click', () => {
 
 
 
-const closeTerms = document.getElementById('btCloseTerms')
-    const terms = document.getElementById('terms')
-    closeTerms.addEventListener('click', ()=>{
-  terms.style.display = 'none'
-    })
+// const closeTerms = document.getElementById('btCloseTerms')
+//     const terms = document.getElementById('terms')
+//     closeTerms.addEventListener('click', ()=>{
+//   terms.style.display = 'none'
+//     })
 
 
